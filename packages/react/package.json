@@ -11,7 +11,7 @@
     "@crossaudio/core": "^0.0.1",
     "react": "^17.0.2"
   },
-  "gitHead": "13db0f30cbaf5531d10fabaf686aa181cdbfbdbb",
+  "gitHead": "df8591ad881965a258eece608a33796bbd2a1279",
   "publishConfig": {
     "access": "public"
   }
