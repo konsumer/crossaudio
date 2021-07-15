@@ -1,23 +1,21 @@
-import { Scheduler } from 'crossaudio'
+export default (context, params, { Scheduler }) => {
+  const sched = new Scheduler({ context, timerAPI: global })
 
-export default context => {
-  var sched = new Scheduler({ context, timerAPI: global })
-
-  function metronome(e) {
-    var t0 = e.playbackTime
+  function metronome (e) {
+    const t0 = e.playbackTime
 
     sched.insert(t0 + 0.000, ticktack, { frequency: 880, amp: 1.0, duration: 1.00 })
     sched.insert(t0 + 0.500, ticktack, { frequency: 440, amp: 0.4, duration: 0.25 })
     sched.insert(t0 + 1.000, ticktack, { frequency: 440, amp: 0.5, duration: 0.25 })
     sched.insert(t0 + 1.500, ticktack, { frequency: 440, amp: 0.4, duration: 0.25 })
-    sched.insert(t0 + 2.000, metronome);
+    sched.insert(t0 + 2.000, metronome)
   }
 
-  function ticktack(e) {
-    var t0 = e.playbackTime
-    var t1 = t0 + e.args.duration
-    var osc = context.createOscillator()
-    var amp = context.createGain()
+  function ticktack (e) {
+    const t0 = e.playbackTime
+    const t1 = t0 + e.args.duration
+    const osc = context.createOscillator()
+    const amp = context.createGain()
 
     osc.frequency.value = e.args.frequency
     osc.start(t0)

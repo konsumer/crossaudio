@@ -1,0 +1,11 @@
+{
+  "name": "@crossaudio/core",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "index.js",
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "license": "MIT",
+  "dependencies": {
+  }
+}

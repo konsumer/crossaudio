@@ -1,0 +1,18 @@
+{
+  "name": "crossaudio",
+  "version": "0.0.0",
+  "type": "module",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@crossaudio/core": "^0.0.0",
+    "easymidi": "^2.0.5",
+    "yargs": "^17.0.1"
+  },
+  "bin": {
+    "crossaudio": "crossaudio.js"
+  }
+}
