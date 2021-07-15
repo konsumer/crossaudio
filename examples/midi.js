@@ -4,23 +4,15 @@
 import WebAudioScheduler from 'web-audio-scheduler'
 
 class Voice {
-  constructor(note, context) {
-    this.note = note
-    this.frequency = 440 * Math.pow(2, (note - 69) / 12)
-    this.context = context
-  }
+  constructor(note, context, gain) {
+    this.vco = context.createOscillator()
+    this.vco.frequency.value = 440 * Math.pow(2, (note - 69) / 12)
 
-  start(gain) {
-    this.vco = this.context.createOscillator()
-    this.vco.type = this.vco.SINE
-    this.vco.frequency.value = this.frequency
-
-    var vca = this.context.createGain()
+    const vca = context.createGain()
     vca.gain.value = gain
 
     this.vco.connect(vca)
-    vca.connect(this.context.destination)
-
+    vca.connect(context.destination)
     this.vco.start(0)
   }
 
@@ -34,12 +26,13 @@ export default (context, params) => {
 
   params.on('note', ({ note, velocity, type }) => {
     if (type === 'noteon') {
-      active_voices[note] = new Voice(note, context)
-      active_voices[note].start(velocity / 127)
+      active_voices[note] = new Voice(note, context, velocity / 127 / 4)
     } else {
       if (active_voices[note]) {
         active_voices[note].stop()
+        delete active_voices[note]
       }
     }
+    console.log(active_voices)
   })
 }
