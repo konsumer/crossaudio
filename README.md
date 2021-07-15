@@ -29,7 +29,7 @@ Any params you use (other than `help` and `version`, which are reserved) will be
 crossaudio file.js --cutoff=74 --resonance=71
 ```
 
-Instead of a number, you can use `note` and `gate`, which will send midi info.
+Instead of a number, you can use `note` and `gate`, which will send midi note info.
 
 ```sh
 crossaudio file.js --mygate=gate --mynote=note
@@ -39,21 +39,17 @@ crossaudio file.js --mygate=gate --mynote=note
 You can use it on a web or non-web project, if you `npm i crossaudio`:
 
 ```js
-import { render } from '@crossaudio/core'
+import { play, Params } from '@crossaudio/core'
 import mySynth from './synths/synth1'
 
-// these can be whatever you want
-const params = {
+// these can be whatever you want, but they need a default value, and keys shouldn't be added/removed
+const params = new Params({
   cutoff: 48,
   resonance: 0
-}
-
-// this creates a render-loop
-render(context => {
-  // do what you want to params here
-  // this runs in a fast loop
-  mySynth(context, params)
 })
+
+// play the synth
+play(mySynth, params)
 ```
 
 ### react
@@ -66,27 +62,19 @@ import { render } from 'react-dom'
 import { CrossAudioProvider, useCrossAudio } from '@crossaudio/react'
 import mySynth from './synths/synth1'
 
-const MyCoolSynth = () => {
-  const cross = useCrossAudio()
-
-  const [params, setParams] = useState({
-    cutoff: 48, // C3
-    resonance: 0
-  })
-
-  cross(context => mySynth(context, params))
-
-  const handleChange = name => e =>
-    setParams(s => ({ ...s, [name]: e.target.value }))
+const MyCoolSynthUI = () => {
+  const [params, setParams] = useCrossAudio()
+  const handleChange = name => e => setParams({ ...params, [name]: e.target.value })
 
   return (
     <div>
-      <input type='range' min='1' max='88' onChange={handleChange('cutoff')} />
+      <input type='range' min='1' max='88' onChange={handleChange('cutoff')} value={params.cutoff} />
       <input
         type='range'
         min='0'
         max='100'
         onChange={handleChange('resonance')}
+        value={params.resonance}
       />
     </div>
   )
@@ -94,8 +82,8 @@ const MyCoolSynth = () => {
 
 render(
   document.getElementById('app'),
-  <CrossAudioProvider>
-    <MyCoolSynth />
+  <CrossAudioProvider synth={mySynth} params={{  cutoff: 48, resonance: 0 }}>
+    <MyCoolSynthUI />
   </CrossAudioProvider>
 )
 ```

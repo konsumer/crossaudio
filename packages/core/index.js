@@ -47,8 +47,8 @@ export async function fetchAudioBuffer(context, filename) {
   }
 }
 
-// hooks up audio and
-function play(synth, params) {
+// hooks up audio and starts playing
+export function play(synth, params) {
   const context = new AudioContext()
   const speaker = new Speaker()
   context.pipe(speaker)
