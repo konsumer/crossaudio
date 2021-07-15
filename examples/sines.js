@@ -1,12 +1,14 @@
-function sample (list) {
+import WebAudioScheduler from 'web-audio-scheduler'
+
+function sample(list) {
   return list[(Math.random() * list.length) | 0]
 }
 
-function mtof (value) {
+function mtof(value) {
   return 440 * Math.pow(2, (value - 69) / 12)
 }
 
-function synth (t0, midi, dur) {
+function synth(t0, midi, dur) {
   const osc1 = context.createOscillator()
   const osc2 = context.createOscillator()
   const gain = context.createGain()
@@ -33,14 +35,15 @@ function synth (t0, midi, dur) {
   gain.connect(context.destination)
 }
 
-export default (context, params, { Scheduler }) => {
-  const sched = new Scheduler({ context, timerAPI: global })
+export default (context, params) => {
+  const sched = new WebAudioScheduler({ context, timerAPI: global })
 
-  function compose (e) {
+  function compose(e) {
     const t0 = e.playbackTime
     const midi = sample([72, 72, 74, 76, 76, 79, 81])
     const dur = sample([2, 2, 4, 4, 4, 4, 8])
-    const nextTime = dur * sample([0.125, 0.125, 0.25, 0.25, 0.25, 0.25, 0.5, 0.75])
+    const nextTime =
+      dur * sample([0.125, 0.125, 0.25, 0.25, 0.25, 0.25, 0.5, 0.75])
     synth(t0, midi, dur)
     sched.insert(t0 + nextTime, compose)
   }

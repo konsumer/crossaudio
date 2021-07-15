@@ -1,29 +1,29 @@
-function sample (list) {
+import WebAudioScheduler from 'web-audio-scheduler'
+
+function sample(list) {
   return list[(Math.random() * list.length) | 0]
 }
 
-function mtof (value) {
+function mtof(value) {
   return 440 * Math.pow(2, (value - 69) / 12)
 }
 
-function synth (t0, midi, dur) {
+function synth(t0, midi, dur) {
   const filter = context.createBiquadFilter()
   const gain = context.createGain()
   const t1 = t0 + dur
-  var freq = mtof(midi)
+  var freq = mtof(midi)[(1, 3 / 2, 15 / 8)].forEach(function (ratio, index) {
+    ;[-12, +12].forEach(function (detune) {
+      const osc = context.createOscillator()
 
-    [1, 3 / 2, 15 / 8].forEach(function (ratio, index) {
-      [-12, +12].forEach(function (detune) {
-        const osc = context.createOscillator()
-
-        osc.type = 'sawtooth'
-        osc.frequency.value = freq * ratio
-        osc.detune.value = detune
-        osc.start(t0)
-        osc.stop(t1)
-        osc.connect(filter)
-      })
+      osc.type = 'sawtooth'
+      osc.frequency.value = freq * ratio
+      osc.detune.value = detune
+      osc.start(t0)
+      osc.stop(t1)
+      osc.connect(filter)
     })
+  })
 
   const cutoff1 = freq * sample([0.25, 0.5, 1, 2, 2, 4, 4, 4, 6, 6, 8])
   const cutoff2 = freq * sample([0.25, 0.5, 1, 2, 2, 4, 4, 4, 6, 6, 8])
@@ -39,10 +39,10 @@ function synth (t0, midi, dur) {
   gain.connect(context.destination)
 }
 
-export default (context, params, { Scheduler }) => {
-  const sched = new Scheduler({ context, timerAPI: global })
+export default (context, params) => {
+  const sched = new WebAudioScheduler({ context, timerAPI: global })
 
-  function compose (e) {
+  function compose(e) {
     const t0 = e.playbackTime
     const midi = sample([60, 60, 62, 64, 64, 67, 69])
     const dur = sample([2, 4, 8, 16])
