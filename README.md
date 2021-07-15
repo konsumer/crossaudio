@@ -89,6 +89,6 @@ render(document.getElementById('app'),
 - create react demo on `gh-pages`
 - write more synths
 - get input working
-- write a plain threejs viz
-- write a react-three-fiber viz
+- write viz for webgl to use in plain threejs, react-three-fiber and node-webgl. [this](https://medium.com/@mag_ops/music-visualiser-with-three-js-web-audio-api-b30175e7b5ba) looks like a cool demo to play with
+- write some sort of CLI viz
 - finish emulator for pi hardware
