@@ -1,10 +1,10 @@
 {
   "name": "crossaudio",
   "description": "crossaudio CLI",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "dependencies": {
-    "@crossaudio/core": "^0.0.2",
+    "@crossaudio/core": "^0.0.3",
     "easymidi": "^2.0.5",
     "yargs": "^17.0.1"
   },
