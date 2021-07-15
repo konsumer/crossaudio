@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "easymidi": "^2.0.5",
+    "emitonoff": "^0.1.0",
     "rxjs": "^7.2.0",
     "speaker": "^0.5.3",
     "web-audio-engine": "^0.13.4",
