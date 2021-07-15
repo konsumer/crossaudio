@@ -4,8 +4,6 @@ import { StreamAudioContext as AudioContext } from 'web-audio-engine'
 import Speaker from 'speaker'
 import WebAudioScheduler from 'web-audio-scheduler'
 
-class AudioScheduler {}
-
 const synth = (context) => {
   const sched = new WebAudioScheduler({ context, timerAPI: global })
 
