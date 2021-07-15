@@ -30,7 +30,7 @@ export class Params {
 }
 
 // load an audio file into a context
-export async function fetchAudioBuffer(context, filename) {
+export async function audioFile(context, filename) {
   if (Array.isArray(filename)) {
     return Promise.all(
       filename.map((filename) => fetchAudioBuffer(context, filename))

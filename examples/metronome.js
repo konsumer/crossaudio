@@ -1,3 +1,5 @@
+// run with crossaudio metronome.js
+
 import WebAudioScheduler from 'web-audio-scheduler'
 
 export default (context, params) => {

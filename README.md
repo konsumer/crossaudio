@@ -29,10 +29,10 @@ Any params you use (other than `help` and `version`, which are reserved) will be
 crossaudio file.js --cutoff=74 --resonance=71
 ```
 
-Instead of a number, you can use `note` and `gate`, which will send midi note info.
+Instead of a number, you can use `note`, which will send midi note info.
 
 ```sh
-crossaudio file.js --mygate=gate --mynote=note
+crossaudio file.js --mynote=note
 ```
 
 
