@@ -91,4 +91,4 @@ render(document.getElementById('app'),
 - get input working
 - write a plain threejs viz
 - write a react-three-fiber viz
-- finish emulator for pi hardwared
+- finish emulator for pi hardware
