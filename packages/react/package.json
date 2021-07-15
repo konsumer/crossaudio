@@ -1,6 +1,6 @@
 {
   "name": "@crossaudio/react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -8,7 +8,7 @@
   "author": "David Konsumer <konsumer@jetboystudio.com>",
   "license": "MIT",
   "dependencies": {
-    "@crossaudio/core": "^0.0.1",
+    "@crossaudio/core": "^0.0.2",
     "react": "^17.0.2"
   },
   "gitHead": "df8591ad881965a258eece608a33796bbd2a1279",
