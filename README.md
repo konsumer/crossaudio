@@ -90,12 +90,9 @@ render(
 
 ## TODO
 
-- finish basic CLI & lib that can run synths
-- improve stream-flow, so it's simpler to setup streams that can react to input changes. This might involve [rxjs](https://github.com/ReactiveX/rxjs)
-- publish on npm
 - create react demo on `gh-pages`
-- write more instruments, especially that use input
-- make a rust wasm instruments
+- write more instruments
+- make a rust wasm instrument
 - get audio-input working
 - write viz for webgl to use in plain threejs, react-three-fiber and node-webgl. [this](https://medium.com/@mag_ops/music-visualiser-with-three-js-web-audio-api-b30175e7b5ba) looks like a cool demo to play with
 - write some sort of CLI viz
