@@ -13,5 +13,9 @@
     "speaker": "^0.5.3",
     "web-audio-engine": "^0.13.4",
     "web-audio-scheduler": "^1.4.0"
+  },
+  "gitHead": "13db0f30cbaf5531d10fabaf686aa181cdbfbdbb",
+  "publishConfig": {
+    "access": "public"
   }
 }

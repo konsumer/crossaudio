@@ -10,5 +10,9 @@
   "dependencies": {
     "@crossaudio/core": "^0.0.1",
     "react": "^17.0.2"
+  },
+  "gitHead": "13db0f30cbaf5531d10fabaf686aa181cdbfbdbb",
+  "publishConfig": {
+    "access": "public"
   }
 }
