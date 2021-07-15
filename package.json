@@ -1,0 +1,50 @@
+{
+  "name": "crossaudio",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Web and native instrument runner for making realtime instruments",
+  "source": "./src/crossaudio.js",
+  "exports": "./dist/crossaudio.modern.js",
+  "main": "./dist/crossaudio.cjs",
+  "module": "./dist/crossaudio.module.js",
+  "unpkg": "./dist/crossaudio.umd.js",
+  "bin": {
+    "crossaudio": "./src/cli.js"
+  },
+  "scripts": {
+    "build": "microbundle",
+    "demo:filter": "node ./src/cli.js ./examples/filter.js",
+    "demo:metronome": "node ./src/cli.js ./examples/metronome.js",
+    "demo:sines": "node ./src/cli.js ./examples/sines.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konsumer/crossaudio.git"
+  },
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konsumer/crossaudio/issues"
+  },
+  "homepage": "https://github.com/konsumer/crossaudio#readme",
+  "dependencies": {
+    "raf": "^3.4.1",
+    "speaker": "^0.5.3",
+    "web-audio-engine": "^0.13.4"
+  },
+  "devDependencies": {
+    "microbundle": "^0.13.3"
+  },
+  "files": [
+    "./dist/crossaudio.cjs",
+    "./dist/crossaudio.cjs.map",
+    "./dist/crossaudio.modern.js",
+    "./dist/crossaudio.modern.js.map",
+    "./dist/crossaudio.module.js",
+    "./dist/crossaudio.module.js.map",
+    "./dist/crossaudio.umd.js",
+    "./dist/crossaudio.umd.js.map",
+    "./react.js"
+  ]
+}
