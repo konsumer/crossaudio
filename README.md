@@ -11,7 +11,7 @@ There are READMEs in all the sub-projects:
 
 - [core](./core)
 - [cli](./cli)
-- [cli](./react)
+- [react](./react)
 
 
 ## TODO
