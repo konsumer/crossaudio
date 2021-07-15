@@ -17,24 +17,24 @@ async function main () {
   const synth = await import(path.resolve(process.cwd(), scriptfile))
 
   // TODO: need to figure this part out
-  function updateParam(name, value, msg) {
+  function updateParam (name, value, msg) {
     console.log(name, value)
   }
 
   if (Object.keys(params).length) {
     const devices = easymidi.getInputs().map(device => {
       const i = new easymidi.Input(device)
-      
+
       const noteParams = Object.keys(params).filter(k => params[k] === 'note')
       const gateParams = Object.keys(params).filter(k => params[k] === 'gate')
-      
+
       const ccLookup = Object.keys(params)
         .filter(k => params[k] !== 'note' && params[k] !== 'gate')
         .reduce((a, k) => {
           return { ...a, [params[k]]: k }
         }, {})
 
-      if (noteParams.length){
+      if (noteParams.length) {
         i.on('noteon', msg => {
           // console.log('on', { ...msg, device })
           noteParams.forEach(name => {
@@ -58,7 +58,7 @@ async function main () {
 
       i.on('cc', msg => {
         // console.log('cc', { ...msg, device })
-        if (ccLookup[msg.controller]){
+        if (ccLookup[msg.controller]) {
           updateParam(ccLookup[msg.controller], msg.value, { ...msg, device })
         }
       })

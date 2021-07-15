@@ -7,5 +7,10 @@
   "author": "David Konsumer <konsumer@jetboystudio.com>",
   "license": "MIT",
   "dependencies": {
+    "easymidi": "^2.0.5",
+    "rxjs": "^7.2.0",
+    "speaker": "^0.5.3",
+    "web-audio-engine": "^0.13.4",
+    "web-audio-scheduler": "^1.4.0"
   }
 }
