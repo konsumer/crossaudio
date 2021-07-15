@@ -6,87 +6,13 @@ I wanted a frontend & backend library I can use to run an "instrument" written i
 
 This is a work-in-progress. It's not close to done. Check back to see how it fills in.
 
-## usage
 
-In web, react, or local headless context, you can use whatever other modules you like. Look in [examples/](./examples) for example-synths.
+There are READMEs in all the sub-projects:
 
-You can use it as a CLI tool:
+- [core](./core)
+- [cli](./cli)
+- [cli](./react)
 
-```
-npx crossaudio yourfile.js
-```
-
-or
-
-```sh
-npm i -g crossaudio
-crossaudio yourfile.js
-```
-
-Any params you use (other than `help` and `version`, which are reserved) will be turned into params to your synth. For example, this will hit your synth with `cutoff` when CC #74 comes in, and `resonance` on #71.
-
-```sh
-crossaudio file.js --cutoff=74 --resonance=71
-```
-
-Instead of a number, you can use `note`, which will send midi note info.
-
-```sh
-crossaudio file.js --mynote=note
-```
-
-
-You can use it on a web or non-web project, if you `npm i crossaudio`:
-
-```js
-import { play, Params } from '@crossaudio/core'
-import mySynth from './synths/synth1'
-
-// these can be whatever you want, but they need a default value, and keys shouldn't be added/removed
-const params = new Params({
-  cutoff: 48,
-  resonance: 0
-})
-
-// play the synth
-play(mySynth, params)
-```
-
-### react
-
-I made a [react context](https://reactjs.org/docs/context.html), so you can build a cool UI in react, and access the synth (to set params) very easily:
-
-```jsx
-import React, { useEffect, useState } from 'react'
-import { render } from 'react-dom'
-import { CrossAudioProvider, useCrossAudio } from '@crossaudio/react'
-import mySynth from './synths/synth1'
-
-const MyCoolSynthUI = () => {
-  const [params, setParams] = useCrossAudio()
-  const handleChange = name => e => setParams({ ...params, [name]: e.target.value })
-
-  return (
-    <div>
-      <input type='range' min='1' max='88' onChange={handleChange('cutoff')} value={params.cutoff} />
-      <input
-        type='range'
-        min='0'
-        max='100'
-        onChange={handleChange('resonance')}
-        value={params.resonance}
-      />
-    </div>
-  )
-}
-
-render(
-  document.getElementById('app'),
-  <CrossAudioProvider synth={mySynth} params={{  cutoff: 48, resonance: 0 }}>
-    <MyCoolSynthUI />
-  </CrossAudioProvider>
-)
-```
 
 ## TODO
 
