@@ -80,3 +80,15 @@ render(document.getElementById('app'),
   </CrossAudioProvider>
 )
 ```
+
+
+## TODO
+
+- finish basic CLI that can run synths
+- improve stream-flow, so it's simpler to setup streams that can react to input changes. This might involve [rxjs](https://github.com/ReactiveX/rxjs)
+- create react demo on `gh-pages`
+- write more synths
+- get input working
+- write a plain threejs viz
+- write a react-three-fiber viz
+- finish emulator for pi hardwared
