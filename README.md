@@ -9,9 +9,9 @@ This is a work-in-progress. It's not close to done. Check back to see how it fil
 
 There are READMEs in all the sub-projects:
 
-- [core](./core)
-- [cli](./cli)
-- [react](./react)
+- [core](./packages/core)
+- [cli](./packages/cli)
+- [react](./packages/react)
 
 
 ## TODO
