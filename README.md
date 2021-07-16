@@ -16,7 +16,6 @@ There are READMEs in all the sub-projects:
 
 ## TODO
 
-- create react demo on `gh-pages`
 - write more instruments
 - make a rust wasm instrument
 - get audio-input working
@@ -24,5 +23,5 @@ There are READMEs in all the sub-projects:
 - write some sort of CLI viz
 - finish emulator for pi hardware
 - flesh out docs, completely
-- make proper website
+- make proper website with react demo
 - use [webmidi](https://github.com/djipco/webmidi/tree/develop) to normalize midi on local/browser
