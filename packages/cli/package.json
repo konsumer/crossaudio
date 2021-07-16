@@ -1,10 +1,10 @@
 {
   "name": "crossaudio",
   "description": "A native way to make synthesizers in javascript using an audio context",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "dependencies": {
-    "@crossaudio/core": "^0.0.3",
+    "@crossaudio/core": "^0.0.4",
     "easymidi": "^2.0.5",
     "yargs": "^17.0.1"
   },

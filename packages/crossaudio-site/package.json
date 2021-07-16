@@ -1,6 +1,6 @@
 {
   "name": "crossaudio-site",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "private": true,
   "homepage": "http://konsumer.js.org/crossaudio/",
   "scripts": {
