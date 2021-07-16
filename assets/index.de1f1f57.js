@@ -1,0 +1,1 @@
+import{R as e,a as l}from"./vendor.cd7509fb.js";const t=()=>e.createElement("div",null,e.createElement("h1",null,"crossaudio"),e.createElement("p",null,"We will eventually have much better docs. Please check back."));l.render(e.createElement(e.StrictMode,null,e.createElement(t,null)),document.getElementById("root"));
