@@ -23,3 +23,5 @@ crossaudio file.js --mynote=note
 ```
 
 For more information about how these synthesizers work, see [crossaudio](https://www.npmjs.com/package/@crossaudio/core).
+
+See [Getting Started](https://github.com/konsumer/crossaudio/wiki/Getting-Started) to quickly get up to speed.

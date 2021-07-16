@@ -60,3 +60,5 @@ export default (context, params) => {
   vcf.connect(context.destination)
 }
 ```
+
+See [Getting Started](https://github.com/konsumer/crossaudio/wiki/Getting-Started) to quickly get up to speed.
