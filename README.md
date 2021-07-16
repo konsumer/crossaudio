@@ -22,6 +22,36 @@ There are READMEs in all the sub-projects:
 
 See [Getting Started](https://github.com/konsumer/crossaudio/wiki/Getting-Started) to quickly get up to speed.
 
+## development
+
+If you are developing on crossaudio packages, it is managed with [lerna](https://lerna.js.org/).
+
+```sh
+git clone git@github.com:konsumer/crossaudio.git
+cd crossaudio
+lerna bootstrap
+```
+
+You can add new dependencies to one or all packages:
+
+```sh
+lerna add PACKAGE
+lerna add PACKAGE --scope @crossaudio/core
+```
+
+You can publish all packages with `lerna publish patch`
+
+I made a couple of shortcuts for messing with the doc-site:
+
+```sh
+# run a watching local dev-server
+npm start
+
+# build & deploy the doc-site
+npm run deploy
+
+```
+
 ## TODO
 
 - write more instruments
