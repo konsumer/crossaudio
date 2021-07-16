@@ -14,6 +14,8 @@ There are READMEs in all the sub-projects:
 - [react](./packages/react)
 
 
+See [Getting Started](https://github.com/konsumer/crossaudio/wiki/Getting-Started) to quickly get up to speed.
+
 ## TODO
 
 - write more instruments
