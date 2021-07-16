@@ -48,7 +48,7 @@ lerna add PACKAGE
 lerna add PACKAGE --scope @crossaudio/core
 ```
 
-You can publish all packages with `lerna publish patch`
+You can publish all packages with `lerna publish`
 
 I made a couple of shortcuts for messing with the doc-site:
 
