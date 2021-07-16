@@ -34,16 +34,16 @@ async function main() {
   }
 
   if (Object.keys(params).length) {
+    const noteParams = Object.keys(params).filter((k) => params[k] === 'note')
+
+    const ccLookup = Object.keys(params)
+      .filter((k) => params[k] !== 'note' && params[k] !== 'gate')
+      .reduce((a, k) => {
+        return { ...a, [params[k]]: k }
+      }, {})
+
     const devices = easymidi.getInputs().map((device) => {
       const i = new easymidi.Input(device)
-
-      const noteParams = Object.keys(params).filter((k) => params[k] === 'note')
-
-      const ccLookup = Object.keys(params)
-        .filter((k) => params[k] !== 'note' && params[k] !== 'gate')
-        .reduce((a, k) => {
-          return { ...a, [params[k]]: k }
-        }, {})
 
       if (noteParams.length) {
         i.on('noteon', (m) => {
