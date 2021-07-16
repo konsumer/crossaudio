@@ -11,6 +11,6 @@
   },
   "scripts": {
     "start": "lerna run dev --stream --scope crossaudio-site",
-    "deploy": "lerna run build --stream --scope crossaudio-site"
+    "deploy": "lerna run deploy --stream --scope crossaudio-site"
   }
 }
