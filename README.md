@@ -27,3 +27,4 @@ See [Getting Started](https://github.com/konsumer/crossaudio/wiki/Getting-Starte
 - flesh out docs, completely
 - make proper website with react demo
 - use [webmidi](https://github.com/djipco/webmidi/tree/develop) to normalize midi on local/browser
+- autopublish everything via github actions (build & publish page, all npm module, etc)
