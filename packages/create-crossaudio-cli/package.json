@@ -1,0 +1,25 @@
+{
+  "name": "create-crossaudio-cli",
+  "version": "0.0.0",
+  "description": "Tool to create a crossaudio CLI synth quickly.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konsumer/crossaudio.git"
+  },
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konsumer/crossaudio/issues"
+  },
+  "homepage": "http://konsumer.js.org/crossaudio/",
+  "bin": {
+    "create-crossaudio-cli": "./index.js"
+  }
+}
