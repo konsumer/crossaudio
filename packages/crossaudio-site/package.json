@@ -5,7 +5,7 @@
   "homepage": "http://konsumer.js.org/crossaudio/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --ssrManifest",
+    "build": "vite build",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
