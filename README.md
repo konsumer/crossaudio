@@ -25,3 +25,4 @@ There are READMEs in all the sub-projects:
 - finish emulator for pi hardware
 - flesh out docs, completely
 - make proper website
+- use [webmidi](https://github.com/djipco/webmidi/tree/develop) to normalize midi on local/browser
