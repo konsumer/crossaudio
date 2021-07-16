@@ -1,10 +1,16 @@
 # crossaudio
 
-I wanted a frontend & backend library I can use to run an "instrument" written in javascript or wasm, so I could make custom headless (or hardware UI, like LCD and rotary-encoders) synths on a pi, and also make a web-based emulator that will run them. It takes some inspiration from react & [elementary](https://www.elementary.audio/). At it's core, it uses [web-audio-engine](https://www.npmjs.com/package/web-audio-engine), so it uses a fairly simple and unmodified web audio API. In the browser, it uses the web-api, elsewhere, it uses native audio.
+A browser & native way to make synthesizers in javascript using [an audio context](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext).
 
 # WIP
 
 This is a work-in-progress. It's not close to done. Check back to see how it fills in.
+
+## motivation
+
+I wanted a frontend & backend library I can use to run an "instrument" written in javascript or wasm, so I could make custom headless (or hardware UI, like LCD and rotary-encoders attached to a pi) synths, and also make a web-based emulator that will run them. It takes some inspiration from react & [elementary](https://www.elementary.audio/). At it's core, it uses [web-audio-engine](https://www.npmjs.com/package/web-audio-engine), so it uses a fairly simple and unmodified web audio API. In the browser, it uses the regular [audio context](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext), elsewhere, it uses native audio.
+
+## getting started
 
 
 There are READMEs in all the sub-projects:
