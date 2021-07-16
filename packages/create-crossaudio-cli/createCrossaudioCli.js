@@ -59,7 +59,7 @@ async function init() {
   await writeFile('package.json', JSON.stringify(pkg, null, 2))
 
   await mkdir('src')
-  witeFile('./src/synth.js', synthTemplate)
+  writeFile('./src/synth.js', synthTemplate)
 }
 
 module.exports = { init }

@@ -22,6 +22,15 @@ There are READMEs in all the sub-projects:
 
 See [Getting Started](https://github.com/konsumer/crossaudio/wiki/Getting-Started) to quickly get up to speed.
 
+The quick gist:
+
+```sh
+npm init crossaudio-cli myproject
+cd myproject
+npm start
+```
+
+
 ## development
 
 If you are developing on crossaudio packages, it is managed with [lerna](https://lerna.js.org/).
