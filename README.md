@@ -1,6 +1,6 @@
 # crossaudio
 
-A browser & native way to make synthesizers in javascript using [an audio context](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext).
+A browser (and react) & native way to make synthesizers in javascript using an an audio context](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext).
 
 # WIP
 

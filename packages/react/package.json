@@ -1,6 +1,6 @@
 {
   "name": "@crossaudio/react",
-  "description": "A browser & native way to make synthesizers in javascript using an audio context, in react",
+  "description": "A browser way to make synthesizers in javascript using an audio context, in react",
   "version": "0.0.3",
   "type": "module",
   "source": "src/index.js",
