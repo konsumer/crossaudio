@@ -21,5 +21,9 @@
   "homepage": "http://konsumer.js.org/crossaudio/",
   "bin": {
     "create-crossaudio-cli": "./index.js"
+  },
+  "dependencies": {
+    "inquirer": "^8.1.2",
+    "yargs": "^17.0.1"
   }
 }

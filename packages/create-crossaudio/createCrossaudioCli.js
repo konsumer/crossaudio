@@ -1,74 +1,167 @@
 const { exec } = require('child_process')
-const { mkdir, writeFile } = require('fs').promises
+const { mkdir, readFile, writeFile, realpath } = require('fs').promises
+const { basename } = require('path')
+const yargs = require('yargs')
+const { hideBin } = require('yargs/helpers')
+const inquirer = require('inquirer')
+const { promisify } = require('util')
 
-//TODO: add fancy CLI option-parsing:
-// https://github.com/facebook/create-react-app/blob/main/packages/create-react-app/createReactApp.js#L55
-
-const synthTemplate = `
-// polyphonic sinewave
-// run with crossaudio --note=note ./src/synth.js
-
-import WebAudioScheduler from 'web-audio-scheduler'
-
-class Voice {
-  constructor(note, context, gain) {
-    this.vco = context.createOscillator()
-    this.vco.frequency.value = 440 * Math.pow(2, (note - 69) / 12)
-
-    const vca = context.createGain()
-    vca.gain.value = gain
-
-    this.vco.connect(vca)
-    vca.connect(context.destination)
-    this.vco.start(0)
-  }
-
-  stop() {
-    this.vco.stop()
-  }
-}
-
-export default (context, params) => {
-  const active_voices = {}
-
-  params.on('note', ({ note, velocity, type }) => {
-    if (type === 'noteon') {
-      active_voices[note] = new Voice(note, context, velocity / 127 / 4)
-    } else {
-      if (active_voices[note]) {
-        active_voices[note].stop()
-        delete active_voices[note]
-      }
-    }
-    console.log(active_voices)
-  })
-}
-`
+// simple wrapper around npm command
+const run = promisify(exec)
+const npm = (command) => run(`npm ${command}`, { cwd: process.cwd() })
 
 async function init() {
-  console.log(process.argv, process.cwd())
-  // console.log('Creating a Crossaudio CLI application...')
-  // const pkg = require('./package.json')
+  const choices = ['cli', 'vanilla', 'react']
+  const argv = yargs(hideBin(process.argv))
+    .usage('$0 [name] [options]')
 
-  // if (process.argv[2]) {
-  //   await mkdir(process.argv[2])
-  //   process.chdir(process.argv[2])
-  //   pkg.name = process.argv[2]
-  // }
+    .positional('name', {
+      description: 'The name of the project to initialize',
+      type: 'string',
+      default: basename(process.cwd())
+    })
 
-  // exec(
-  //   'npm install --no-audit --save --save-exact --loglevel error crossaudio @crossaudio/core'
-  // )
+    .option('template', {
+      alias: 't',
+      description: 'The project template to initialize',
+      type: 'string',
+      default: 'cli',
+      choices
+    })
 
-  // pkg.type = 'module'
-  // pkg.scripts = {
-  //   start: 'crossaudio --note=note ./src/synth.js'
-  // }
-  // await writeFile('package.json', JSON.stringify(pkg, null, 2))
+    .alias('help', 'h')
+    .alias('version', 'v').argv
 
-  // await mkdir('src')
-  // writeFile('./src/synth.js', synthTemplate)
-  // console.log(process.argv)
+  // if no name, use inquirer
+  const when = !argv['_'][0]
+
+  // positional doesn't work in top-level options
+  argv.name = argv['_'][0] || basename(process.cwd())
+
+  const questions = [
+    {
+      name: 'name',
+      message: "What is your project's name?",
+      type: 'input',
+      default: argv.name,
+      when
+    },
+    {
+      name: 'template',
+      message: 'What kind of project is it?',
+      type: 'list',
+      choices,
+      default: argv.template,
+      when
+    }
+  ]
+
+  const options = { ...argv, ...(await inquirer.prompt(questions)) }
+
+  // clean up duplications
+  delete options.t
+  delete options._
+
+  console.log(
+    `Creating a Crossaudio ${options.template} application named ${options.name}...`
+  )
+
+  const templates = {
+    // shared
+    synth: await readFile(`${__dirname}/templates/synth.js`),
+    gitignore: await readFile(`${__dirname}/templates/gitignore`),
+
+    // vanilla
+    run: await readFile(`${__dirname}/templates/run.js`),
+
+    // react
+    vite: await readFile(`${__dirname}/templates/vite.config.js`),
+    index: await readFile(`${__dirname}/templates/index.html`),
+    main: await readFile(`${__dirname}/templates/main.jsx`),
+    favicon: await readFile(`${__dirname}/templates/favicon.svg`),
+    style: await readFile(`${__dirname}/templates/style.css`)
+  }
+
+  // name was given, which means use a subdir
+  if (!when) {
+    await mkdir(options.name)
+    process.chdir(options.name)
+  }
+
+  await mkdir('src')
+  await Promise.all([
+    writeFile('./.gitignore', templates.gitignore),
+    writeFile('./src/synth.js', templates.synth),
+    npm('init -y')
+  ])
+
+  if (options.template === 'cli') {
+    console.log('Installing crossaudio')
+    await npm(
+      'install --no-audit --save --save-exact --loglevel error crossaudio'
+    )
+  }
+
+  if (options.template === 'vanilla') {
+    console.log('Installing crossaudio')
+    await npm(
+      'install --no-audit --save --save-exact --loglevel error @crossaudio/core easymidi'
+    )
+    await writeFile('./src/run.js', templates.run)
+  }
+
+  if (options.template === 'react') {
+    console.log('Installing react & crossaudio')
+    await npm(
+      'install --no-audit --save --save-exact --loglevel error react react-dom @crossaudio/react'
+    )
+
+    console.log('Installing react dev-tools')
+    await npm(
+      'install --no-audit --save --save-exact --loglevel error -D @vitejs/plugin-react-refresh vite'
+    )
+    await Promise.all([
+      writeFile('vite.config.js', templates.vite),
+      writeFile('src/main.jsx', templates.main),
+      writeFile('index.html', templates.index),
+      writeFile('src/favicon.svg', templates.favicon),
+      writeFile('src/style.css', templates.style)
+    ])
+  }
+
+  const pkg = JSON.parse(await readFile('package.json'))
+  pkg.type = 'module'
+
+  if (options.template === 'cli') {
+    pkg.scripts = {
+      start: 'crossaudio midi.js --note=note'
+    }
+  }
+
+  if (options.template === 'vanilla') {
+    pkg.scripts = {
+      start: 'node ./src/run.js'
+    }
+  }
+
+  if (options.template === 'react') {
+    pkg.scripts = {
+      dev: 'vite',
+      build: 'vite build',
+      serve: 'vite preview',
+      start: 'npm run dev'
+    }
+  }
+
+  await writeFile('package.json', JSON.stringify(pkg, null, 2))
+
+  console.log(
+    `Wrote to ${await realpath('package.json')}\n\n${JSON.stringify(
+      pkg,
+      null,
+      2
+    )}\n`
+  )
 }
 
 module.exports = { init }
