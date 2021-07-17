@@ -1,11 +1,11 @@
 {
   "name": "@crossaudio/react",
   "description": "A browser way to make synthesizers in javascript using an audio context, in react",
-  "version": "0.0.14",
+  "version": "0.1.0",
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "@crossaudio/core": "^0.0.14"
+    "@crossaudio/core": "^0.1.0"
   },
   "gitHead": "df8591ad881965a258eece608a33796bbd2a1279",
   "publishConfig": {
