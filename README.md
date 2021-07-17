@@ -75,3 +75,5 @@ npm run deploy
 - make proper website with react demo
 - use [webmidi](https://github.com/djipco/webmidi/tree/develop) to normalize midi on local/browser
 - autopublish everything via github actions (build & publish page, all npm module, etc)
+- Confirm making current dir a project in `create` and add `--yes` option to not prompt
+ 
