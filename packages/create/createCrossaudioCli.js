@@ -10,7 +10,7 @@ const { promisify } = require('util')
 const run = promisify(exec)
 const npm = (command) => run(`npm ${command}`, { cwd: process.cwd() })
 
-async function init() {
+async function init () {
   const choices = ['cli', 'vanilla', 'react']
   const argv = yargs(hideBin(process.argv))
     .usage('$0 [name] [options]')
@@ -33,10 +33,10 @@ async function init() {
     .alias('version', 'v').argv
 
   // if no name, use inquirer
-  const when = !argv['_'][0]
+  const when = !argv._[0]
 
   // positional doesn't work in top-level options
-  argv.name = argv['_'][0] || basename(process.cwd())
+  argv.name = argv._[0] || basename(process.cwd())
 
   const questions = [
     {
@@ -134,7 +134,7 @@ async function init() {
 
   if (options.template === 'cli') {
     pkg.scripts = {
-      start: 'crossaudio midi.js --note=note'
+      start: 'crossaudio ./src/synth.js --note=note'
     }
   }
 

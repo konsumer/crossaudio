@@ -54,7 +54,7 @@ export async function play (synth, params) {
 
   if (isNode) {
     const AudioContext = (await import('web-audio-engine')).StreamAudioContext
-    const Speaker = await import('speaker')
+    const Speaker = (await import('speaker')).default
     speaker = new Speaker()
     context = new AudioContext()
     context.pipe(speaker)
