@@ -38,8 +38,11 @@ If you are developing on crossaudio packages, it is managed with [lerna](https:/
 ```sh
 git clone git@github.com:konsumer/crossaudio.git
 cd crossaudio
+npm i
 lerna bootstrap
 ```
+
+I have `./node_modules/.bin` in my path, so local commands work, but you might have to globally install lerne, or reference the full path.
 
 You can add new dependencies to one or all packages:
 
