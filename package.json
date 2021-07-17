@@ -9,6 +9,7 @@
   "dependencies": {
     "@crossaudio/core": "0.0.10",
     "crossaudio": "0.0.10",
+    "react": "^17.0.2",
     "web-audio-scheduler": "^1.4.0"
   },
   "scripts": {

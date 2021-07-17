@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import mdx from 'vite-plugin-mdx'
-import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import { resolve } from 'path'
 
 const optionsRefresh = {}
 
@@ -13,7 +13,9 @@ const optionsMdx = {
 export default defineConfig({
   plugins: [reactRefresh(optionsRefresh), mdx(optionsMdx)],
   base: '/crossaudio/',
-  rollupInputOptions: {
-    pluginsPreBuild: [peerDepsExternal()]
+  resolve: {
+    alias: {
+      react: resolve('node_modules/react')
+    }
   }
 })
