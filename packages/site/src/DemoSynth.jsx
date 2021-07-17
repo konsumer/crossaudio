@@ -3,7 +3,7 @@ import { useCrossAudio } from '@crossaudio/react'
 
 const DemoSynth = () => {
   const [params, setParams] = useCrossAudio()
-  const handleChange = name => e => setParams({ ...params, [name]: e.target.value })
+  const handleChange = name => e => setParams({ ...params, [name]: parseInt(e.target.value) })
   const handlePower = e => setParams({ ...params, power: e.target.checked })
   return (
     <div className='synth'>

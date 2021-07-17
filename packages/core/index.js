@@ -61,10 +61,13 @@ export async function play (synth, params) {
     context.resume()
     synth(context, params)
   } else {
+    // audio requires click to start, in browser
     window.addEventListener('click', () => {
-      context = new AudioContext()
-      context.resume()
-      synth(context, params)
+      if (!context) {
+        context = new AudioContext()
+        context.resume()
+        synth(context, params)
+      }
     })
   }
 }
