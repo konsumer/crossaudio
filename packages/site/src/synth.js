@@ -1,3 +1,6 @@
+// NOTE: I liek to normalize ranges to 0-127, so it roughly fits with MIDI
+// you don't have to do this, but it makes it easier to hook lots of differnt things up to each other
+
 // get midi frequency from 0-127
 const mtof = note => 440 * Math.pow(2, (note - 69) / 12)
 
