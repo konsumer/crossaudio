@@ -10,5 +10,6 @@ const optionsMdx = {
 }
 
 export default defineConfig({
-  plugins: [reactRefresh(optionsRefresh), mdx(optionsMdx)]
+  plugins: [reactRefresh(optionsRefresh), mdx(optionsMdx)],
+  base: '/crossaudio/'
 })
