@@ -8,7 +8,7 @@ import synth from './synth'
 
 ReactDOM.render(
   <React.StrictMode>
-    <CrossAudioProvider synth={synth} params={{ cutoff: 48, resonance: 0, power: false, note: 48 }}>
+    <CrossAudioProvider synth={synth} params={{ cutoff: 48, resonance: 2, power: false, note: 48 }}>
       <App />
     </CrossAudioProvider>
   </React.StrictMode>,
