@@ -46,12 +46,20 @@ export default (context, params) => {
 `
 
 async function init() {
-  console.log('Creating a Crossaudio CLI application...')
+  console.log(process.argv, basename, package)
+  // console.log('Creating a Crossaudio CLI application...')
+  // const pkg = require('./package.json')
+
+  // if (process.argv[2]) {
+  //   await mkdir(process.argv[2])
+  //   process.chdir(process.argv[2])
+  //   pkg.name = process.argv[2]
+  // }
+
   // exec(
   //   'npm install --no-audit --save --save-exact --loglevel error crossaudio @crossaudio/core'
   // )
 
-  // const pkg = require('./package.json')
   // pkg.type = 'module'
   // pkg.scripts = {
   //   start: 'crossaudio --note=note ./src/synth.js'
@@ -60,7 +68,7 @@ async function init() {
 
   // await mkdir('src')
   // writeFile('./src/synth.js', synthTemplate)
-  console.log(process.argv)
+  // console.log(process.argv)
 }
 
 module.exports = { init }
