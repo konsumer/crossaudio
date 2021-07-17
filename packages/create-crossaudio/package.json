@@ -1,6 +1,6 @@
 {
   "name": "create-crossaudio",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Tool to create a crossaudio synth quickly.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
