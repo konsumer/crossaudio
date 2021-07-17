@@ -100,12 +100,18 @@ async function init () {
     await npm(
       'install --no-audit --save --save-exact --loglevel error crossaudio'
     )
+    await npm(
+      'install --no-audit --save --save-exact --loglevel error -D nodemon'
+    )
   }
 
   if (options.template === 'vanilla') {
     console.log('Installing crossaudio')
     await npm(
       'install --no-audit --save --save-exact --loglevel error @crossaudio/core easymidi'
+    )
+    await npm(
+      'install --no-audit --save --save-exact --loglevel error -D nodemon'
     )
     await writeFile('./src/run.js', templates.run)
   }
@@ -134,21 +140,21 @@ async function init () {
 
   if (options.template === 'cli') {
     pkg.scripts = {
-      start: 'crossaudio ./src/synth.js --note=note'
+      start: "nodemon -x 'crossaudio --note=note' ./src/synth.js",
+      run: 'crossaudio --note=note ./src/synth.js'
     }
   }
 
   if (options.template === 'vanilla') {
     pkg.scripts = {
-      start: 'node ./src/run.js'
+      start: 'nodemon ./src/run.js',
+      run: 'node ./src/run.js'
     }
   }
 
   if (options.template === 'react') {
     pkg.scripts = {
-      dev: 'vite',
       build: 'vite build',
-      serve: 'vite preview',
       start: 'npm run dev'
     }
   }
