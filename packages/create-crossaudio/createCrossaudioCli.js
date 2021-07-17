@@ -46,7 +46,7 @@ export default (context, params) => {
 `
 
 async function init() {
-  console.log(process.argv, process.env)
+  console.log(process.argv, process.cwd())
   // console.log('Creating a Crossaudio CLI application...')
   // const pkg = require('./package.json')
 
