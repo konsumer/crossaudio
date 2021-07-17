@@ -23,7 +23,7 @@ const {
   )
   .example('$0 file.js --note=note', 'Send midi-message for note on/off').argv
 
-async function main() {
+async function main () {
   const synth = (await import(path.resolve(process.cwd(), scriptfile))).default
 
   // set intiial values to 0
@@ -33,7 +33,7 @@ async function main() {
     }, {})
   )
 
-  function updateParam(name, value, msg) {
+  function updateParam (name, value, msg) {
     synthParams[name] = value
   }
 

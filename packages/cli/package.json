@@ -1,8 +1,8 @@
 {
   "name": "crossaudio",
+  "type": "module",
   "description": "A native way to make synthesizers in javascript using an audio context",
   "version": "0.1.1",
-  "type": "module",
   "dependencies": {
     "@crossaudio/core": "^0.1.1",
     "easymidi": "^2.0.5",
@@ -25,5 +25,11 @@
   "bugs": {
     "url": "https://github.com/konsumer/crossaudio/issues"
   },
-  "homepage": "http://konsumer.js.org/crossaudio/"
+  "homepage": "http://konsumer.js.org/crossaudio/",
+  "devDependencies": {
+    "pkg": "^5.3.0"
+  },
+  "scripts": {
+    "build": "pkg -C --public --out-path dist/ ./crossaudio.js"
+  }
 }
