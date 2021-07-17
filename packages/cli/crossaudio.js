@@ -11,7 +11,11 @@ const {
   _: [scriptfile],
   ...params
 } = yargs(hideBin(process.argv))
-  .usage('Usage: $0 <synthfile.js> [options]')
+  .usage('Usage: $0 <synthfile> [options]')
+  .positional('synthfile', {
+    description: 'The crossaudio script that defines your synth',
+    required: true
+  })
   .demand(1)
   .example(
     '$0 file.js --cutoff=74 --resonance=71',
