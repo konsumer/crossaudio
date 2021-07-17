@@ -25,7 +25,7 @@ See [Getting Started](https://github.com/konsumer/crossaudio/wiki/Getting-Starte
 The quick gist:
 
 ```sh
-npm init crossaudio-cli myproject
+npm init crossaudio myproject
 cd myproject
 npm start
 ```
