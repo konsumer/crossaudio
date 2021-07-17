@@ -155,7 +155,7 @@ async function init () {
   if (options.template === 'react') {
     pkg.scripts = {
       build: 'vite build',
-      start: 'npm run dev'
+      start: 'vite dev'
     }
   }
 
