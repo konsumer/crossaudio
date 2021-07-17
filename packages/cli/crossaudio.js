@@ -46,7 +46,7 @@ async function main () {
         return { ...a, [params[k]]: k }
       }, {})
 
-    const devices = easymidi.getInputs().map((device) => {
+    easymidi.getInputs().forEach((device) => {
       const i = new easymidi.Input(device)
 
       if (noteParams.length) {
