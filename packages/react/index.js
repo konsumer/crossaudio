@@ -22,5 +22,5 @@ export const CrossAudioProvider = ({ synth, params, ...props }) => {
     play(synth, actualParams)
   }, [])
 
-  return <context.Provider {...props} value={[state, updateState]} />
+  return React.createElement(context.Provider, { ...props, value: [state, updateState] })
 }

@@ -3,8 +3,7 @@
   "description": "A browser way to make synthesizers in javascript using an audio context, in react",
   "version": "0.0.13",
   "type": "module",
-  "source": "src/index.js",
-  "main": "dist/index.js",
+  "main": "index.js",
   "dependencies": {
     "@crossaudio/core": "^0.0.13",
     "react": "^17.0.2"

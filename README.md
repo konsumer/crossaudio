@@ -42,7 +42,7 @@ npm i
 lerna bootstrap
 ```
 
-I have `./node_modules/.bin` in my path, so local commands work, but you might have to globally install lerne, or reference the full path.
+I have `./node_modules/.bin/` in my path, so local commands work, but you might have to globally install lerne, or reference the full path.
 
 You can add new dependencies to one or all packages:
 

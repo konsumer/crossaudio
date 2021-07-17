@@ -17,49 +17,48 @@
   }
   </script>
   <script type="module">
-    import { play, Params } from '@crossaudio/core'
-    import Spectrograph from '@web-audio-components/spectrograph'
-    
-    const canvas = document.getElementsByTag('canvas')[0]
-    const freq = document.getElementsByTag('input')[0]
+import { play, Params } from '@crossaudio/core'
+import Spectrograph from '@web-audio-components/spectrograph'
 
-    function synth(context, params) {
-      // setup visualization
-      const buffer = context.createBufferSource()
-      const spec = new Spectrograph(context, { canvas })
+const canvas = document.getElementsByTag('canvas')[0]
+const freq = document.getElementsByTag('input')[0]
 
-      // make an oscillator
-      const vco = context.createOscillator()
-      vco.frequency.value = params.frequency
-      vco.start()
-      
-      // respond to changes of frequency
-      params.on('frequency', newFrequency => {
-        vco.frequency.value = newFrequency
-      })
+function synth(context, params) {
+  // setup visualization
+  const buffer = context.createBufferSource()
+  const spec = new Spectrograph(context, { canvas })
 
-      // connect oscillator to buffer, buffer to viz & viz to output
-      vco.connect(buffer)
-      buffer.connect(spec)
-      spec.connect(context.destination)
-    }
-
-    // setup initial params
-    const p = new Params({
-      frequency: 440
-    })
-
-    // periodically update the frequency slider, every second
-    setInterval(() =>  {
-      input.value = 65 + (Math.random() * 800
-    }, 1000)
-
-    play(synth, p)
-
-    // on chnage, update the param
-    input.addEventListener('change', e => {
-      p.frequency = input.value
-    })
+  // make an oscillator
+  const vco = context.createOscillator()
+  vco.frequency.value = params.frequency
+  vco.start()
   
-  </script>
+  // respond to changes of frequency
+  params.on('frequency', newFrequency => {
+    vco.frequency.value = newFrequency
+  })
+
+  // connect oscillator to buffer, buffer to viz & viz to output
+  vco.connect(buffer)
+  buffer.connect(spec)
+  spec.connect(context.destination)
+}
+
+// setup initial params
+const p = new Params({
+  frequency: 440
+})
+
+// periodically update the frequency slider, every second
+setInterval(() => {
+  freq.value = 65 + (Math.random() * 800)
+}, 1000)
+
+play(synth, p)
+
+// on chnage, update the param
+freq.addEventListener('change', e => {
+  p.frequency = freq.value
+})
+</script>
 </body>

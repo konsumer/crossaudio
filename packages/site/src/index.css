@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+  padding: 20px;
 }
 
 code {
@@ -12,9 +14,40 @@ code {
     monospace;
 }
 
+h1 {
+  font-size: 60px;
+  margin: 0;
+}
+
+hr {
+  border: 5px solid #ccc;
+}
+
 #root {
   width: 100%;
   max-width: 1024px;
   margin: auto;
+}
+
+.synth {
+  border: 5px dashed #666;
   padding: 20px;
+}
+
+.synth > div {
+  display: flex;
+  align-items: center;
+}
+
+.synth > div > input[type=range] {
+  flex: 1;
+}
+
+.synth > div > label {
+  width: 120px;
+}
+
+.value {
+  padding-left: 10px;
+  width: 20px;
 }
