@@ -4,6 +4,7 @@ This is a little runtime to make building synthesizers in javascript (native, no
 
 ## install
 
+- You can get a quick template-project with `npm init crossaudio`
 - You can run it without installing with `npx crossaudio`.
 - You can install it in your project with `npm i crossaudio`.
 - You can install it globally with `npm i -g crossaudio`.

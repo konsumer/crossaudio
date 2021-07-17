@@ -2,6 +2,13 @@
 
 This will allow you to use [crossaudio](https://www.npmjs.com/package/@crossaudio/core) more easily in react.
 
+## install
+
+- You can get a quick template-project with `npm init crossaudio -- -t react`
+- You can install it in your project with `npm i @crossaudio/react`.
+
+
+## use
 
 ```jsx
 import React, { useEffect, useState } from 'react'

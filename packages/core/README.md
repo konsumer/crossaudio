@@ -4,6 +4,7 @@ This is a little runtime to make building synthesizers in javascript (native, an
 
 ## install
 
+- You can get a quick template-project with `npm init crossaudio`
 - You can install it in your project with `npm i @crossaudio/core`.
 - You can use [the crossaudio CLI](https://www.npmjs.com/package/crossaudio)
 - You can use [the react lib](https://www.npmjs.com/package/@crossaudio/react)
