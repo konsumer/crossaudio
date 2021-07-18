@@ -33,19 +33,19 @@
     "build": "microbundle",
     "prepublishOnly": "npm run build"
   },
-  "source": "./index.js",
-  "main": "./dist/crossaudio.cjs",
-  "exports": "./dist/crossaudio.modern.js",
-  "module": "./dist/crossaudio.module.js",
-  "unpkg": "./dist/crossaudio.umd.js",
+  "source": "index.js",
+  "main": "dist/crossaudio.cjs",
+  "exports": "dist/crossaudio.modern.js",
+  "module": "dist/crossaudio.module.js",
+  "unpkg": "dist/crossaudio.umd.js",
   "files": [
-    "./dist/crossaudio.umd.js",
-    "./dist/crossaudio.umd.js.map",
-    "./dist/crossaudio.module.js",
-    "./dist/crossaudio.module.js.map",
-    "./dist/crossaudio.modern.js",
-    "./dist/crossaudio.modern.js.map",
-    "./dist/crossaudio.cjs",
-    "./dist/crossaudio.cjs.map"
+    "dist/crossaudio.umd.js",
+    "dist/crossaudio.umd.js.map",
+    "dist/crossaudio.module.js",
+    "dist/crossaudio.module.js.map",
+    "dist/crossaudio.modern.js",
+    "dist/crossaudio.modern.js.map",
+    "dist/crossaudio.cjs",
+    "dist/crossaudio.cjs.map"
   ]
 }
