@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "microbundle",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "source": "./index.js",
   "main": "./dist/crossaudio.cjs",
