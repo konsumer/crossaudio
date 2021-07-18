@@ -5,6 +5,7 @@ const yargs = require('yargs')
 const { hideBin } = require('yargs/helpers')
 const inquirer = require('inquirer')
 const { promisify } = require('util')
+const ora = require('ora')
 
 // simple wrapper around npm command
 const run = promisify(exec)
@@ -96,17 +97,19 @@ async function init () {
   ])
 
   if (options.template === 'cli') {
-    console.log('Installing crossaudio')
+    const spinner = ora('Installing crossaudio CLI tools').start()
     await npm(
       'install --no-audit --save --save-exact --loglevel error crossaudio'
     )
     await npm(
       'install --no-audit --save --save-exact --loglevel error -D nodemon'
     )
+    spinner.succeed()
   }
 
   if (options.template === 'vanilla') {
     console.log('Installing crossaudio')
+    const spinner = ora('Installing crossaudio & easymidi').start()
     await npm(
       'install --no-audit --save --save-exact --loglevel error @crossaudio/core easymidi'
     )
@@ -114,10 +117,11 @@ async function init () {
       'install --no-audit --save --save-exact --loglevel error -D nodemon'
     )
     await writeFile('./src/run.js', templates.run)
+    spinner.succeed()
   }
 
   if (options.template === 'react') {
-    console.log('Installing react & crossaudio')
+    const spinner = ora('Installing crossaudio & react').start()
     await npm(
       'install --no-audit --save --save-exact --loglevel error react react-dom @crossaudio/react'
     )
@@ -133,6 +137,7 @@ async function init () {
       writeFile('src/favicon.svg', templates.favicon),
       writeFile('src/style.css', templates.style)
     ])
+    spinner.succeed()
   }
 
   const pkg = JSON.parse(await readFile('package.json'))

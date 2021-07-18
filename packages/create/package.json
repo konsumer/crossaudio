@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "inquirer": "^8.1.2",
+    "ora": "^5.4.1",
     "yargs": "^17.0.1"
   }
 }
