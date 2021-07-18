@@ -33,11 +33,11 @@
     "build": "microbundle",
     "prepublishOnly": "npm run build"
   },
-  "source": "index.js",
-  "main": "dist/crossaudio.cjs",
-  "exports": "dist/crossaudio.modern.js",
-  "module": "dist/crossaudio.module.js",
-  "unpkg": "dist/crossaudio.umd.js",
+  "source": "./index.js",
+  "main": "./dist/crossaudio.cjs",
+  "exports": "./dist/crossaudio.modern.js",
+  "module": "./dist/crossaudio.module.js",
+  "unpkg": "./dist/crossaudio.umd.js",
   "files": [
     "dist/crossaudio.umd.js",
     "dist/crossaudio.umd.js.map",
