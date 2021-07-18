@@ -97,47 +97,47 @@ async function init () {
   ])
 
   if (options.template === 'cli') {
-    const spinner = ora('Installing crossaudio CLI tools').start()
-    await npm(
-      'install --no-audit --save --save-exact --loglevel error crossaudio'
-    )
-    await npm(
-      'install --no-audit --save --save-exact --loglevel error -D nodemon'
-    )
-    spinner.succeed()
+    const action = async () => {
+      await npm(
+        'install --no-audit --save --save-exact --loglevel error crossaudio'
+      )
+      await npm(
+        'install --no-audit --save --save-exact --loglevel error -D nodemon'
+      )
+    }
+    await ora.promise(action(), 'Installing crossaudio CLI tools')
   }
 
   if (options.template === 'vanilla') {
-    console.log('Installing crossaudio')
-    const spinner = ora('Installing crossaudio & easymidi').start()
-    await npm(
-      'install --no-audit --save --save-exact --loglevel error @crossaudio/core easymidi'
-    )
-    await npm(
-      'install --no-audit --save --save-exact --loglevel error -D nodemon'
-    )
-    await writeFile('./src/run.js', templates.run)
-    spinner.succeed()
+    const action = async () => {
+      await npm(
+        'install --no-audit --save --save-exact --loglevel error @crossaudio/core easymidi'
+      )
+      await npm(
+        'install --no-audit --save --save-exact --loglevel error -D nodemon'
+      )
+      await writeFile('./src/run.js', templates.run)
+    }
+    await ora.promise(action(), 'Installing crossaudio & easymidi')
   }
 
   if (options.template === 'react') {
-    const spinner = ora('Installing crossaudio & react').start()
-    await npm(
-      'install --no-audit --save --save-exact --loglevel error react react-dom @crossaudio/react'
-    )
-
-    console.log('Installing react dev-tools')
-    await npm(
-      'install --no-audit --save --save-exact --loglevel error -D @vitejs/plugin-react-refresh vite'
-    )
-    await Promise.all([
-      writeFile('vite.config.js', templates.vite),
-      writeFile('src/main.jsx', templates.main),
-      writeFile('index.html', templates.index),
-      writeFile('src/favicon.svg', templates.favicon),
-      writeFile('src/style.css', templates.style)
-    ])
-    spinner.succeed()
+    const action = async () => {
+      await npm(
+        'install --no-audit --save --save-exact --loglevel error react react-dom @crossaudio/react'
+      )
+      await npm(
+        'install --no-audit --save --save-exact --loglevel error -D @vitejs/plugin-react-refresh vite'
+      )
+      await Promise.all([
+        writeFile('vite.config.js', templates.vite),
+        writeFile('src/main.jsx', templates.main),
+        writeFile('index.html', templates.index),
+        writeFile('src/favicon.svg', templates.favicon),
+        writeFile('src/style.css', templates.style)
+      ])
+    }
+    await ora.promise(action(), 'Installing crossaudio, react & vite')
   }
 
   const pkg = JSON.parse(await readFile('package.json'))
@@ -165,14 +165,6 @@ async function init () {
   }
 
   await writeFile('package.json', JSON.stringify(pkg, null, 2))
-
-  console.log(
-    `Wrote to ${await realpath('package.json')}\n\n${JSON.stringify(
-      pkg,
-      null,
-      2
-    )}\n`
-  )
 }
 
 module.exports = { init }
