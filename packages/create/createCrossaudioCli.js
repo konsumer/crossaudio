@@ -1,5 +1,5 @@
 const { exec } = require('child_process')
-const { mkdir, readFile, writeFile, realpath } = require('fs').promises
+const { mkdir, readFile, writeFile } = require('fs').promises
 const { basename } = require('path')
 const yargs = require('yargs')
 const { hideBin } = require('yargs/helpers')
@@ -124,7 +124,7 @@ async function init () {
   if (options.template === 'react') {
     const action = async () => {
       await npm(
-        'install --no-audit --save --save-exact --loglevel error react react-dom @crossaudio/react'
+        'install --no-audit --save --save-exact --loglevel error react react-dom @crossaudio/react react-piano'
       )
       await npm(
         'install --no-audit --save --save-exact --loglevel error -D @vitejs/plugin-react-refresh vite'
@@ -160,7 +160,7 @@ async function init () {
   if (options.template === 'react') {
     pkg.scripts = {
       build: 'vite build',
-      start: 'vite dev'
+      start: 'vite'
     }
   }
 
