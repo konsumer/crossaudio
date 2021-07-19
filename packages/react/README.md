@@ -45,3 +45,8 @@ render(
 For more information about how these synthesizers work, see [crossaudio](https://www.npmjs.com/package/@crossaudio/core).
 
 See [Getting Started](https://github.com/konsumer/crossaudio/wiki/Getting-Started) to quickly get up to speed.
+
+
+You can see an example of [react-piano](https://www.npmjs.com/package/react-piano) sending note messages [here](https://github.com/konsumer/crossaudio/blob/main/packages/create/templates/main.jsx). That's the demo file that is included if you run `npm init crossaudio` and choose a react project.
+
+Check out [useMidi](https://www.npmjs.com/package/@react-midi/hooks). You can hook this up to a synth to use midi hardware.
