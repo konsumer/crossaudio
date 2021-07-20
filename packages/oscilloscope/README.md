@@ -1,15 +1,15 @@
-# crossaudio spectrograph
+# crossaudio oscilloscope
 
-This is loosely based on [web-audio-components/spectrograph](https://github.com/web-audio-components/spectrograph). It allows you to draw a spectrograph to a canvas.
+This allows you to draw a spectrograph to a canvas.
 
 ## usage
 
-Install in your web-project with `npm i @crossaudio/spectrograph`. Use it in a synth, like this:
+Install in your web-project with `npm i @crossaudio/oscilloscope`. Use it in a synth, like this:
 
 Put this in your HTML:
 
 ```html
-<canvas id="canvas" width="960" height="300" /><br />
+<canvas id="canvas" width="960" height="300" style="background: black" /><br />
 <label><span>frequency:</span> <input type="range" min="0" max="127" id="frequency"></label>
 ```
 
@@ -19,8 +19,9 @@ And this in your script:
 const mtof = note => 440 * Math.pow(2, (note - 69) / 12)
 
 const synth = (context, params) => {
-  const spectrograph = new Spectrograph(context, document.getElementById('canvas'))
-  spectrograph.start()
+  // In this example, `white` is foreground, and `black` is background.
+  const oscilloscope = new Oscilloscope(context, document.getElementById('canvas'), 'white', 'black')
+  oscilloscope.start()
 
   const vco = context.createOscillator()
   vco.frequency.value = mtof(params.frequency)
@@ -30,8 +31,8 @@ const synth = (context, params) => {
     vco.frequency.value = mtof(value)
   })
 
-  vco.connect(spectrograph)
-  spectrograph.connect(context.destination)
+  vco.connect(oscilloscope)
+  oscilloscope.connect(context.destination)
 }
 
 // play synth

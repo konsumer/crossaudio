@@ -4,7 +4,7 @@
 class Voice {
   constructor (note, context, gain) {
     this.vco = context.createOscillator()
-    this.vco.frequency.value = 440 * Math.pow(2, (note - 69) / 12)
+    this.vco.frequency.value = 48 * Math.pow(2, (note - 69) / 12)
 
     const vca = context.createGain()
     vca.gain.value = gain

@@ -1,5 +1,5 @@
 <head>
-  <title>@crossaudio/spectrograph</title>
+  <title>@crossaudio/oscilloscope</title>
   <style>
     body {
       width: 95%;
@@ -18,8 +18,8 @@
   </style>
 </head>
 <body>
-  <h1>@crossaudio/spectrograph</h1>
-  <p>This is a simple demo of <a href="https://github.com/konsumer/crossaudio/tree/main/packages/spectrograph">@crossaudio/spectrograph</a>. View the source to see how it works. It uses plain javascript, but could be loaded in react, or even some native implementation of canvas. Due to browser-security, you will need to click on the page or interact with a slider to start the synth.</p>
+  <h1>@crossaudio/oscilloscope</h1>
+  <p>This is a simple demo of <a href="https://github.com/konsumer/crossaudio/tree/main/packages/oscilloscope">@crossaudio/oscilloscope</a>. View the source to see how it works. It uses plain javascript, but could be loaded in react, or even some native implementation of canvas. Due to browser-security, you will need to click on the page or interact with a slider to start the synth.</p>
   
   <canvas id="canvas" width="960" height="300"></canvas>
 
@@ -30,13 +30,13 @@
 {
   "imports": {
     "@crossaudio/core": "https://unpkg.com/@crossaudio/core@latest/dist/crossaudio.module.js",
-    "@crossaudio/spectrograph": "https://unpkg.com/@crossaudio/spectrograph@latest/dist/crossaudio-spectrograph.module.js"
+    "@crossaudio/oscilloscope": "https://unpkg.com/@crossaudio/oscilloscope@latest/dist/crossaudio-oscilloscope.module.js"
   }
 }
 </script>
 
 <script type="module">
-import { Spectrograph } from '@crossaudio/spectrograph'
+import { Oscilloscope } from '@crossaudio/oscilloscope'
 import { play, Params } from '@crossaudio/core'
 
 // convert midi note 0-127 to frequency
@@ -44,8 +44,8 @@ const mtof = note => 440 * Math.pow(2, (note - 69) / 12)
 
 // standard synth definition
 const synth = (context, params) => {
-  const spectrograph = new Spectrograph(context, document.getElementById('canvas'))
-  spectrograph.start()
+  const oscilloscope = new Oscilloscope(context, document.getElementById('canvas'), 'white')
+  oscilloscope.start()
 
   const vco = context.createOscillator()
   vco.frequency.value = mtof(params.frequency)
@@ -55,8 +55,8 @@ const synth = (context, params) => {
     vco.frequency.value = mtof(value)
   })
 
-  vco.connect(spectrograph)
-  spectrograph.connect(context.destination)
+  vco.connect(oscilloscope)
+  oscilloscope.connect(context.destination)
 }
 
 // setup the synth
