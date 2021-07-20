@@ -1,0 +1,25 @@
+{
+  "name": "@crossaudio/spectrograph",
+  "description": "A canvas-based spectrograph for crossaudio, on the web",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "@crossaudio/core": "^0.1.6"
+  },
+  "gitHead": "df8591ad881965a258eece608a33796bbd2a1279",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konsumer/crossaudio.git"
+  },
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konsumer/crossaudio/issues"
+  },
+  "homepage": "http://konsumer.js.org/crossaudio/"
+}

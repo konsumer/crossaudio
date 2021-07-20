@@ -1,0 +1,85 @@
+<head>
+  <title>@crossaudio/spectrograph</title>
+</head>
+<body>
+  <h1>@crossaudio/spectrograph</h1>
+  <p>This is a simple demo of <a href="https://github.com/konsumer/crossaudio/tree/main/packages/spectrograph"></a>. View the source to see how it works. It uses plain javascript, but could be loaded in react, or even some native implementation of canvas.</p>
+  <canvas id="canvas"></canvas>
+
+  <label><span>frequency:</span> <input type="range" min="0" max="127" id="frequency"></label>
+  <label><span>cutoff:</span> <input type="range" min="0" max="127" id="cutoff"></label>
+  <label><span>resonance:</span> <input type="range" min="0" max="127" id="resonance"></label>
+
+<!-- This maps module-names to locations. It shows how to load the library from CDNs. -->
+<script type="importmap">
+{
+  "imports": {
+    "@crossaudio/core": "https://unpkg.com/@crossaudio/core/dist/crossaudio.module.js",
+    "emitonoff": "https://unpkg.com/emitonoff",
+    "@crossaudio/spectrograph": "./index.js"
+  }
+}
+</script>
+
+<script type="module">
+import { Spectrograph } from '@crossaudio/spectrograph'
+import { play, Params } from '@crossaudio/core'
+
+const canvasCtx = document.getELementById('canvas').getContext('2d')
+const controls = {
+  frequency: document.getELementById('frequency'),
+  cutoff: document.getELementById('cutoff'),
+  resonance: document.getELementById('resonance')
+}
+
+// convert midi note 0-127 to frequency
+function mtof (value) {
+  return 440 * Math.pow(2, (value - 69) / 12)
+}
+
+// standard synth definition
+const synth = (context, params) => {
+  const vco = context.createOscillator()
+  vco.frequency.value = mtof(params.frequency)
+  vco.start()
+
+  params.on('frequency', value => {
+    vco.frequency.value = mtof(value)
+  })
+
+  const vcf = context.createBiquadFilter()
+  vcf.type = 'lowpass'
+  vcf.frequency.value = mtof(params.cutoff)
+  vcf.q.value = params.resonance
+
+  params.on('cutoff', value => {
+    vcf.frequency.value = mtof(value)
+  })
+
+  params.on('resonance', value => {
+    vcf.q.value = value
+  })
+
+  // add a graph that uses the canvas
+  const spectrograph = new Spectrograph(context, canvasCtx)
+
+  // vco -> vcf -> spectrograph -> out
+  vco.connect(vcf)
+  vcf.connect(spectrograph)
+  spectrograph.connect(context.destination)
+}
+
+// setup the synth
+const params = new Params({
+  resonance: 0,
+  frequency: 48,
+  cutoff: 48
+})
+play(synth, params)
+
+// hook up the UI
+controls.resonance.onchange = e => { params.resonance = controls.resonance.value }
+controls.frequency.onchange = e => { params.frequency = controls.frequency.value }
+controls.cutoff.onchange = e => { params.cutoff = controls.cutoff.value }
+</script>
+</body>
