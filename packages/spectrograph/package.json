@@ -22,7 +22,7 @@
   },
   "homepage": "http://konsumer.js.org/crossaudio/",
   "scripts": {
-    "build": "microbundle",
+    "build": "microbundle --external none",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
