@@ -10,7 +10,7 @@ export class Bargraph extends AnalyserNode {
     super(audioContext, { maxDecibels, minDecibels, smoothingTimeConstant, fftSize })
     this.canvas = canvas
     this.canvasContext = canvas.getContext('2d')
-    this.palette = palette || defaultPallette
+    this.palette = palette
     this.backgroundColor = backgroundColor
 
     // set this to false to stop the loop
