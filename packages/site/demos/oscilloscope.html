@@ -1,0 +1,55 @@
+<head>
+  <title>@crossaudio/oscilloscope</title>
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <div id="root">
+    <h1>@crossaudio/oscilloscope</h1>
+    <p>This is a simple demo of <a href="https://github.com/konsumer/crossaudio/tree/main/packages/oscilloscope">@crossaudio/oscilloscope</a>. View the source to see how it works. It uses plain javascript, but could be loaded in react, or even some native implementation of canvas. Due to browser-security, you will need to click on the page or interact with a slider to start the synth.</p>
+    
+    <canvas id="canvas" width="960" height="300"></canvas>
+
+    <label><span>frequency:</span> <input type="range" min="0" max="127" id="frequency"></label>
+  </div>
+
+<!-- use CDN to grab these -->
+<script src="https://unpkg.com/@crossaudio/core@latest"></script>
+<!-- <script src="https://unpkg.com/@crossaudio/oscilloscope@latest"></script> -->
+<script src="dist/crossaudio-oscilloscope.umd.js"></script>
+
+<script>
+// these were added by script-tags, above
+const { Oscilloscope } = window.oscilloscope
+const { play, Params } = window.core
+
+// convert midi note 0-127 to frequency
+const mtof = note => 440 * Math.pow(2, (note - 69) / 12)
+
+// standard synth definition
+const synth = (context, params) => {
+  const oscilloscope = new Oscilloscope(context, document.getElementById('canvas'), 'white', 'black')
+  oscilloscope.start()
+
+  const vco = context.createOscillator()
+  vco.frequency.value = mtof(params.frequency)
+  vco.start()
+
+  params.on('frequency', value => {
+    vco.frequency.value = mtof(value)
+  })
+
+  vco.connect(oscilloscope)
+  oscilloscope.connect(context.destination)
+}
+
+// setup the synth
+const params = new Params({
+  frequency: 48
+})
+play(synth, params)
+
+// hook up the UI
+const freq = document.getElementById('frequency')
+freq.onchange = e => { params.frequency = freq.value }
+</script>
+</body>

@@ -1,7 +1,7 @@
 /* global AnalyserNode */
 
 export class Oscilloscope extends AnalyserNode {
-  constructor (audioContext, canvas, foregroundColor = 'black', backgroundColor = 'transparent', maxDecibels = -25, minDecibels = -60, smoothingTimeConstant = 0.5, fftSize = 2048) {
+  constructor (audioContext, canvas, foregroundColor = 'black', backgroundColor = 'white', maxDecibels = -25, minDecibels = -60, smoothingTimeConstant = 0.5, fftSize = 2048) {
     super(audioContext, { maxDecibels, minDecibels, smoothingTimeConstant, fftSize })
     this.canvas = canvas
     this.canvasContext = canvas.getContext('2d')
