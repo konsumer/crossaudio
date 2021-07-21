@@ -19,9 +19,6 @@
 const { Bargraph } = window.bargraph
 const { play } = window.core
 
-// "jet" from https://www.npmjs.com/package/colormap
-const palette = ['#000083', '#000787', '#000d8c', '#001490', '#001b94', '#002199', '#00289d', '#002fa1', '#0035a6', '#003caa', '#0047af', '#0152b3', '#015db8', '#0167bd', '#0172c2', '#027dc6', '#0288cb', '#0293d0', '#039ed5', '#03a8d9', '#03b3de', '#03bee3', '#04c9e7', '#04d4ec', '#04dff1', '#04e9f6', '#05f4fa', '#05ffff', '#14fff0', '#22ffe1', '#31ffd2', '#40ffc3', '#4fffb4', '#5dffa5', '#6cff96', '#7bff87', '#89ff78', '#98ff69', '#a7ff5a', '#b5ff4b', '#c4ff3c', '#d3ff2d', '#e2ff1e', '#f0ff0f', '#ffff00', '#fff100', '#fee300', '#fed500', '#fec600', '#feb800', '#fdaa00', '#fd9c00', '#fd8e00', '#fd8000', '#fc7100', '#fc6300', '#fc5500', '#fb4700', '#fb3900', '#fb2a00', '#fb1c00', '#fa0e00', '#fa0000', '#ec0000', '#df0000', '#d10000', '#c40000', '#b60000', '#a90000', '#9b0000', '#8e0000', '#800000']
-
 // standard synth definition
 const synth = async (context, params) => {
   // TODO: wrap this in crossaudio
@@ -30,7 +27,7 @@ const synth = async (context, params) => {
   audio.play()
   const source = context.createMediaElementSource(audio)
 
-  const bargraph = new Bargraph(context, document.getElementById('canvas'), palette, '#000980')
+  const bargraph = new Bargraph(context, document.getElementById('canvas'))
   bargraph.start()
 
   source.connect(bargraph)
