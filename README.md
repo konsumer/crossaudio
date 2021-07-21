@@ -18,6 +18,9 @@ There are READMEs in all the sub-projects:
 - [core](./packages/core)
 - [cli](./packages/cli)
 - [react](./packages/react)
+- [bargraph](./packages/bargraph)
+- [oscilloscope](./packages/oscilloscope)
+- [spectrograph](./packages/spectrograph)
 
 
 See [Getting Started](https://github.com/konsumer/crossaudio/wiki/Getting-Started) to quickly get up to speed.
