@@ -2,13 +2,11 @@
 
 import WebAudioScheduler from 'web-audio-scheduler'
 
-function sample (list) {
-  return list[(Math.random() * list.length) | 0]
-}
+// pick a random array-item
+const sample = list => list[(Math.random() * list.length) | 0]
 
-function mtof (value) {
-  return 440 * Math.pow(2, (value - 69) / 12)
-}
+// convert midi note 0-127 to frequency
+const mtof = note => 440 * Math.pow(2, (note - 69) / 12)
 
 export default (context, params) => {
   const sched = new WebAudioScheduler({ context, timerAPI: global })
