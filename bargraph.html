@@ -1,27 +1,14 @@
 <head>
   <title>@crossaudio/bargraph</title>
-  <style>
-    body {
-      width: 95%;
-      max-width: 1024px;
-      margin: auto;
-      font-family: sans-serif;
-      padding: 20px;
-    }
-    label {
-      display: block;
-    }
-    canvas {
-      width: 100%;
-      background: black;
-    }
-  </style>
+  <link rel="stylesheet" href="demo.css">
 </head>
 <body>
-  <h1>@crossaudio/bargraph</h1>
-  <p>This is a simple demo of <a href="https://github.com/konsumer/crossaudio/tree/main/packages/bargraph">@crossaudio/bargraph</a>. View the source to see how it works. It uses plain javascript, but could be loaded in react, or even some native implementation of canvas. Due to browser-security, you will need to click on the page to start the analysis. The test-music is <a href="https://soundcloud.com/mokhov/midnight-love">Mokhov - Midnight Love</a></p>
-  
-  <canvas id="canvas" width="960" height="300"></canvas>
+  <div id="root">
+    <h1>@crossaudio/bargraph</h1>
+    <p>This is a simple demo of <a href="https://github.com/konsumer/crossaudio/tree/main/packages/bargraph">@crossaudio/bargraph</a>. View the source to see how it works. It uses plain javascript, but could be loaded in react, or even some native implementation of canvas. Due to browser-security, you will need to click on the page to start the analysis. The test-music is <a href="https://soundcloud.com/mokhov/midnight-love">Mokhov - Midnight Love</a></p>
+    
+    <canvas id="canvas" width="960" height="300"></canvas>
+  </div>
 
 <!-- use CDN to get these -->
 <script src="https://unpkg.com/@crossaudio/core@latest"></script>
@@ -36,7 +23,7 @@ const { play } = window.core
 // standard synth definition
 const synth = async (context, params) => {
   // TODO: wrap this in crossaudio
-  const audio = new Audio('bargraph-demo.mp3')
+  const audio = new Audio('demo.mp3')
   audio.loop = true
   audio.play()
   const source = context.createMediaElementSource(audio)
