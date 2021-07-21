@@ -1,0 +1,49 @@
+<head>
+  <title>@crossaudio/spectrograph</title>
+  <style>
+    body {
+      width: 95%;
+      max-width: 1024px;
+      margin: auto;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    canvas {
+      width: 100%;
+      background: #000980;
+    }
+  </style>
+</head>
+<body>
+  <h1>@crossaudio/spectrograph</h1>
+  <p>This is a simple demo of <a href="https://github.com/konsumer/crossaudio/tree/main/packages/spectrograph">@crossaudio/spectrograph</a>. View the source to see how it works. It uses plain javascript, but could be loaded in react, or even some native implementation of canvas. Due to browser-security, you will need to click on the page to start the analysis.</p>
+  <canvas id="canvas" width="960" height="300"></canvas>
+
+<!-- use CDN to get these -->
+<script src="https://unpkg.com/@crossaudio/core@latest"></script>
+<script src="https://unpkg.com/@crossaudio/spectrograph@latest"></script>
+<!-- <script src="dist/crossaudio-spectrograph.umd.js"></script> -->
+
+<script>
+// these were added by script-tags, above
+const { Spectrograph } = window.spectrograph
+const { play } = window.core
+
+// standard synth definition
+const synth = async (context, params) => {
+  // TODO: wrap this in crossaudio
+  const audio = new Audio('spectrograph-demo.mp3')
+  audio.loop = true
+  audio.play()
+  const source = context.createMediaElementSource(audio)
+
+  const spectrograph = new Spectrograph(context, document.getElementById('canvas'))
+  spectrograph.start()
+
+  source.connect(spectrograph)
+  spectrograph.connect(context.destination)
+}
+
+play(synth)
+</script>
+</body>
