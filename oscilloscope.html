@@ -26,7 +26,7 @@ const mtof = note => 440 * Math.pow(2, (note - 69) / 12)
 
 // standard synth definition
 const synth = (context, params) => {
-  const oscilloscope = new Oscilloscope(context, document.getElementById('canvas'), 'white', 'black')
+  const oscilloscope = new Oscilloscope(context, document.getElementById('canvas'), 'yellow', '#000980')
   oscilloscope.start()
 
   const vco = context.createOscillator()
