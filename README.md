@@ -4,7 +4,7 @@ A browser (and react) & native way to make synthesizers in javascript using an a
 
 # WIP
 
-This is a work-in-progress. It's not close to done. Check back to see how it fills in.
+This is a work-in-progress. It's getting close to "ready for use", but there still might be some rough edges. Check back to see how it fills in.
 
 ## motivation
 
