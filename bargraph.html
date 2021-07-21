@@ -27,7 +27,7 @@ const synth = async (context, params) => {
   audio.play()
   const source = context.createMediaElementSource(audio)
 
-  const bargraph = new Bargraph(context, document.getElementById('canvas'))
+  const bargraph = new Bargraph(context, document.getElementById('canvas'), undefined, '#000980')
   bargraph.start()
 
   source.connect(bargraph)
