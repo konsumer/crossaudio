@@ -2,6 +2,8 @@
 
 This allows you to draw a spectrograph to a canvas.
 
+![screenshot](./screenshot.png)
+
 ## usage
 
 Install in your web-project with `npm i @crossaudio/oscilloscope`. Use it in a synth, like this:

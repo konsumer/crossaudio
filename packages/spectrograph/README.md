@@ -2,6 +2,8 @@
 
 This is loosely based on [web-audio-components/spectrograph](https://github.com/web-audio-components/spectrograph). It allows you to draw a spectrograph to a canvas.
 
+![screenshot](./screenshot.png)
+
 ## usage
 
 Install in your web-project with `npm i @crossaudio/spectrograph`. Use it in a synth, like this:
