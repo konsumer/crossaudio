@@ -25,7 +25,6 @@ export class Oscilloscope extends AnalyserNode {
       if (this.backgroundColor) {
         this.canvasContext.beginPath()
         this.canvasContext.fillStyle = this.backgroundColor
-        this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height)
         this.canvasContext.fillRect(0, 0, this.canvas.width, this.canvas.height)
       }
 

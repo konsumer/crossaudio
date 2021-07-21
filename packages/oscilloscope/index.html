@@ -25,19 +25,15 @@
 
   <label><span>frequency:</span> <input type="range" min="0" max="127" id="frequency"></label>
 
-<!-- This maps module-names to locations. It shows how to load the library from unpkg. -->
-<script type="importmap">
-{
-  "imports": {
-    "@crossaudio/core": "https://unpkg.com/@crossaudio/core@latest/dist/crossaudio.module.js",
-    "@crossaudio/oscilloscope": "https://unpkg.com/@crossaudio/oscilloscope@latest/dist/crossaudio-oscilloscope.module.js"
-  }
-}
-</script>
+<!-- use CDN to grab these -->
+<script src="https://unpkg.com/@crossaudio/core@latest"></script>
+<script src="https://unpkg.com/@crossaudio/oscilloscope@latest"></script>
+<!-- <script src="dist/crossaudio-oscilloscope.umd.js"></script> -->
 
-<script type="module">
-import { Oscilloscope } from '@crossaudio/oscilloscope'
-import { play, Params } from '@crossaudio/core'
+<script>
+// these were added by script-tags, above
+const { Oscilloscope } = window.oscilloscope
+const { play, Params } = window.core
 
 // convert midi note 0-127 to frequency
 const mtof = note => 440 * Math.pow(2, (note - 69) / 12)
