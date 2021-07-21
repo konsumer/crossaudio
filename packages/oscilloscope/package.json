@@ -20,12 +20,10 @@
   "homepage": "http://konsumer.js.org/crossaudio/",
   "scripts": {
     "build": "microbundle",
-    "prepublishOnly": "npm run build",
-    "start": "vite"
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "microbundle": "^0.13.3",
-    "vite": "^2.4.3"
+    "microbundle": "^0.13.3"
   },
   "source": "./index.js",
   "main": "./dist/crossaudio-oscilloscope.cjs",
