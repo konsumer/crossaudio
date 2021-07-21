@@ -1,7 +1,7 @@
 {
   "name": "@crossaudio/bargraph",
   "description": "A canvas-based bargraph for crossaudio, on the web",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "type": "module",
   "dependencies": {
     "color-interpolate": "^1.0.5"
