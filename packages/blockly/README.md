@@ -1,6 +1,6 @@
 # crossaudio blockly
 
-Allows you to build cross-platform synthesizers without knowing how to code, using [blockly](https://developers.google.com/blockly).
+Allows you to build cross-platform synthesizers without code, using [blockly](https://developers.google.com/blockly).
 
 ## TODO
 
