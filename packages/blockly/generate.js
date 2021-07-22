@@ -57,6 +57,8 @@ const getNodes = async interfaces => (await Promise.all(
           })
       )
 
+      // TODO: normalize params as numbers/etc
+
       const description = (await $('.seoSummary', page))[0]?.textContent
 
       return {
