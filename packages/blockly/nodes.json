@@ -1,0 +1,497 @@
+[
+  {
+    "name": "AnalyserNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "1 (but may be left unconnected)",
+      "Channel count mode": "max",
+      "Channel count": "2",
+      "Channel interpretation": "speakers"
+    },
+    "params": [
+      {
+        "name": "fftSize",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/fftSize",
+        "description": "Is an unsigned long value representing the size of the FFT (Fast Fourier Transform) to be used to determine the frequency domain."
+      },
+      {
+        "name": "frequencyBinCount",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/frequencyBinCount",
+        "description": "Is an unsigned long value half that of the FFT size. This generally equates to the number of data values you will have to play with for the visualization."
+      },
+      {
+        "name": "minDecibels",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/minDecibels",
+        "description": "Is a double value representing the minimum power value in the scaling range for the FFT analysis data, for conversion to unsigned byte values — basically, this specifies the minimum value for the range of results when using getByteFrequencyData()."
+      },
+      {
+        "name": "maxDecibels",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/maxDecibels",
+        "description": "Is a double value representing the maximum power value in the scaling range for the FFT analysis data, for conversion to unsigned byte values — basically, this specifies the maximum value for the range of results when using getByteFrequencyData()."
+      },
+      {
+        "name": "smoothingTimeConstant",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/smoothingTimeConstant",
+        "description": "Is a double value representing the averaging constant with the last analysis frame — basically, it makes the transition between values over time smoother."
+      }
+    ]
+  },
+  {
+    "name": "AudioBufferSourceNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode",
+    "properties": {
+      "Number of inputs": "0",
+      "Number of outputs": "1",
+      "Channel count": "defined by the associated AudioBuffer"
+    },
+    "description": "The AudioBufferSourceNode interface is an AudioScheduledSourceNode which represents an audio source consisting of in-memory audio data, stored in an AudioBuffer. It's especially useful for playing back audio which has particularly stringent timing accuracy requirements, such as for sounds that must match a specific rhythm and can be kept in memory rather than being played from disk or the network.",
+    "params": [
+      {
+        "name": "buffer",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/buffer",
+        "description": "An AudioBuffer that defines the audio asset to be played, or when set to the value null, defines a single channel of silence (in which every sample is 0.0)."
+      },
+      {
+        "name": "detune",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/detune",
+        "description": "Is a k-rate AudioParam representing detuning of playback in cents. This value is compounded with playbackRate to determine the speed at which the sound is played. Its default value is 0 (meaning no detuning), and its nominal range is -∞ to ∞."
+      },
+      {
+        "name": "loop",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/loop",
+        "description": "A Boolean attribute indicating if the audio asset must be replayed when the end of the AudioBuffer is reached. Its default value is false."
+      },
+      {
+        "name": "loopStart",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/loopStart",
+        "description": "A floating-point value indicating the time, in seconds, at which playback of the AudioBuffer must begin when loop is true. Its default value is 0 (meaning that at the beginning of each loop, playback begins at the start of the audio buffer)."
+      },
+      {
+        "name": "loopEnd",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/loopEnd",
+        "description": "A floating-point number indicating the time, in seconds, at which playback of the AudioBuffer stops and loops back to the time indicated by loopStart, if loop is true. The default value is 0."
+      },
+      {
+        "name": "playbackRate",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/playbackRate",
+        "description": "An a-rate AudioParam that defines the speed factor at which the audio asset will be played, where a value of 1.0 is the sound's natural sampling rate. Since no pitch correction is applied on the output, this can be used to change the pitch of the sample. This value is compounded with detune to determine the final playback rate."
+      }
+    ]
+  },
+  {
+    "name": "AudioDestinationNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioDestinationNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "0",
+      "Channel count mode": "explicit",
+      "Channel count": "2",
+      "Channel interpretation": "speakers"
+    },
+    "params": [
+      {
+        "name": "maxChannelCount",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AudioDestinationNode/maxChannelCount",
+        "description": "Is an unsigned long defining the maximum number of channels that the physical device can handle."
+      }
+    ]
+  },
+  {
+    "name": "BiquadFilterNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "1",
+      "Channel count mode": "max",
+      "Channel count": "2 (not used in the default count mode)",
+      "Channel interpretation": "speakers"
+    },
+    "description": "The BiquadFilterNode interface represents a simple low-order filter, and is created using the BaseAudioContext/createBiquadFilter method. It is an AudioNode that can represent different kinds of filters, tone control devices, and graphic equalizers.",
+    "params": [
+      {
+        "name": "frequency",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/frequency",
+        "description": "Is an a-rate AudioParam, a double representing a frequency in the current filtering algorithm measured in hertz (Hz)."
+      },
+      {
+        "name": "detune",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/detune",
+        "description": "Is an a-rate AudioParam representing detuning of the frequency in cents."
+      },
+      {
+        "name": "Q",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/Q",
+        "description": "Is an a-rate AudioParam, a double representing a Q factor, or quality factor."
+      },
+      {
+        "name": "gain",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/gain",
+        "description": "Is an a-rate AudioParam, a double representing the gain used in the current filtering algorithm."
+      },
+      {
+        "name": "type",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/type",
+        "description": "Is a string value defining the kind of filtering algorithm the node is implementing.\n\n \n  The meaning of the different parameters depending of the type of the filter (detune has the same meaning regardless, so isn't listed below)\n  \n   \n    type\n    Description\n    frequency\n    Q\n    gain\n   \n  \n  \n   \n    lowpass\n    Standard second-order resonant lowpass filter with 12dB/octave rolloff. Frequencies below the cutoff pass through; frequencies above it are attenuated.\n    The cutoff frequency.\n    Indicates how peaked the frequency is around the cutoff. The greater the value is, the greater is the peak.\n    Not used\n   \n   \n    highpass\n    Standard second-order resonant highpass filter with 12dB/octave rolloff. Frequencies below the cutoff are attenuated; frequencies above it pass through.\n    The cutoff frequency.\n    Indicates how peaked the frequency is around the cutoff. The greater the value, the greater the peak.\n    Not used\n   \n   \n    bandpass\n    Standard second-order bandpass filter. Frequencies outside the given range of frequencies are attenuated; the frequencies inside it pass through.\n    The center of the range of frequencies.\n    Controls the width of the frequency band. The greater the Q value, the smaller the frequency band.\n    Not used\n   \n   \n    lowshelf\n    Standard second-order lowshelf filter. Frequencies lower than the frequency get a boost, or an attenuation; frequencies over it are unchanged.\n    The upper limit of the frequencies getting a boost or an attenuation.\n    Not used\n    The boost, in dB, to be applied; if negative, it will be an attenuation.\n   \n   \n    highshelf\n    Standard second-order highshelf filter. Frequencies higher than the frequency get a boost or an attenuation; frequencies lower than it are unchanged.\n    The lower limit of the frequencies getting a boost or an attenuation.\n    Not used\n    The boost, in dB, to be applied; if negative, it will be an attenuation.\n   \n   \n    peaking\n    Frequencies inside the range get a boost or an attenuation; frequencies outside it are unchanged.\n    The middle of the frequency range getting a boost or an attenuation.\n    Controls the width of the frequency band. The greater the Q value, the smaller the frequency band.\n    The boost, in dB, to be applied; if negative, it will be an attenuation.\n   \n   \n    notch\n    Standard notch filter, also called a band-stop or band-rejection filter. It is the opposite of a bandpass filter: frequencies outside the give range of frequencies pass through; frequencies inside it are attenuated.\n    The center of the range of frequencies.\n    Controls the width of the frequency band. The greater the Q value, the smaller the frequency band.\n    Not used\n   \n   \n    allpass\n    Standard second-order allpass filter. It lets all frequencies through, but changes the phase-relationship between the various frequencies.\n    The frequency with the maximal group delay, that is, the frequency where the center of the phase transition occurs.\n    Controls how sharp the transition is at the medium frequency. The larger this parameter is, the sharper and larger the transition will be.\n    Not used\n   \n  \n \n "
+      }
+    ]
+  },
+  {
+    "name": "ChannelMergerNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/ChannelMergerNode",
+    "properties": {
+      "Number of inputs": "variable; default to 6.",
+      "Number of outputs": "1",
+      "Channel count mode": "max",
+      "Channel count": "2 (not used in the default count mode)",
+      "Channel interpretation": "speakers"
+    },
+    "params": []
+  },
+  {
+    "name": "ChannelSplitterNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/ChannelSplitterNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "variable; default to 6.",
+      "Channel count mode": "explicit Older implementations, as per earlier versions of the spec use max.",
+      "Channel count": "Fixed to the number of outputs. Older implementations, as per earlier versions of the spec use 2 (not used in the default count mode).",
+      "Channel interpretation": "discrete"
+    },
+    "params": []
+  },
+  {
+    "name": "ConstantSourceNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/ConstantSourceNode",
+    "properties": {
+      "Number of inputs": "0",
+      "Number of outputs": "1"
+    },
+    "params": [
+      {
+        "name": "offset",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/ConstantSourceNode/offset",
+        "description": "An AudioParam which specifies the value that this source continuously outputs. The default value is 1.0."
+      }
+    ]
+  },
+  {
+    "name": "ConvolverNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "1",
+      "Channel count mode": "clamped-max",
+      "Channel count": "1, 2, or 4",
+      "Channel interpretation": "speakers"
+    },
+    "params": [
+      {
+        "name": "buffer",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode/buffer",
+        "description": "A mono, stereo, or 4-channel AudioBuffer containing the (possibly multichannel) impulse response used by the ConvolverNode to create the reverb effect."
+      },
+      {
+        "name": "normalize",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode/normalize",
+        "description": "A boolean that controls whether the impulse response from the buffer will be scaled by an equal-power normalization when the buffer attribute is set, or not."
+      }
+    ]
+  },
+  {
+    "name": "DelayNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/DelayNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "1",
+      "Channel count mode": "max",
+      "Channel count": "2 (not used in the default count mode)",
+      "Channel interpretation": "speakers"
+    },
+    "description": "The DelayNode interface represents a delay-line; an AudioNode audio-processing module that causes a delay between the arrival of an input data and its propagation to the output.",
+    "params": [
+      {
+        "name": "delayTime",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/DelayNode/delayTime",
+        "description": "Is an a-rate AudioParam representing the amount of delay to apply, specified in seconds."
+      }
+    ]
+  },
+  {
+    "name": "DynamicsCompressorNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "1",
+      "Channel count mode": "clamped-max",
+      "Channel count": "2",
+      "Channel interpretation": "speakers"
+    },
+    "params": [
+      {
+        "name": "threshold",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode/threshold",
+        "description": "Is a k-rate AudioParam representing the decibel value above which the compression will start taking effect."
+      },
+      {
+        "name": "knee",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode/knee",
+        "description": "Is a k-rate AudioParam containing a decibel value representing the range above the threshold where the curve smoothly transitions to the compressed portion."
+      },
+      {
+        "name": "ratio",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode/ratio",
+        "description": "Is a k-rate AudioParam representing the amount of change, in dB, needed in the input for a 1 dB change in the output."
+      },
+      {
+        "name": "reduction",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode/reduction",
+        "description": "Is a float representing the amount of gain reduction currently applied by the compressor to the signal."
+      },
+      {
+        "name": "attack",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode/attack",
+        "description": "Is a k-rate AudioParam representing the amount of time, in seconds, required to reduce the gain by 10 dB."
+      },
+      {
+        "name": "release",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode/release",
+        "description": "Is a k-rate AudioParam representing the amount of time, in seconds, required to increase the gain by 10 dB."
+      }
+    ]
+  },
+  {
+    "name": "GainNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/GainNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "1",
+      "Channel count mode": "max",
+      "Channel count": "2 (not used in the default count mode)",
+      "Channel interpretation": "speakers"
+    },
+    "params": [
+      {
+        "name": "gain",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/GainNode/gain",
+        "description": "Is an a-rate AudioParam representing the amount of gain to apply. You have to set AudioParam.value or use the methods of AudioParam to change the effect of gain."
+      }
+    ]
+  },
+  {
+    "name": "IIRFilterNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/IIRFilterNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "1",
+      "Channel count mode": "max",
+      "Channel count": "Same as on the input",
+      "Channel interpretation": "speakers"
+    },
+    "params": []
+  },
+  {
+    "name": "MediaElementAudioSourceNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode",
+    "properties": {
+      "Number of inputs": "0",
+      "Number of outputs": "1",
+      "Channel count": "defined by the media in the HTMLMediaElement passed to the AudioContext.createMediaElementSource method that created it."
+    },
+    "params": [
+      {
+        "name": "mediaElement",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode/mediaElement",
+        "description": "The HTMLMediaElement used when constructing this MediaStreamAudioSourceNode."
+      }
+    ]
+  },
+  {
+    "name": "MediaStreamAudioDestinationNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioDestinationNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "0",
+      "Channel count": "2",
+      "Channel count mode": "explicit",
+      "Channel count interpretation": "speakers"
+    },
+    "params": [
+      {
+        "name": "stream",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioDestinationNode/stream",
+        "description": "A MediaStream containing a single MediaStreamTrack whose kind is audio and with the same number of channels as the node. You can use this property to get a stream out of the audio graph and feed it into another construct, such as a Media Recorder."
+      }
+    ]
+  },
+  {
+    "name": "MediaStreamAudioSourceNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioSourceNode",
+    "properties": {
+      "Number of inputs": "0",
+      "Number of outputs": "1",
+      "Channel count": "defined by the first audio MediaStreamTrack passed to the AudioContext.createMediaStreamSource() method that created it."
+    },
+    "description": "The MediaStreamAudioSourceNode interface is a type of AudioNode which operates as an audio source whose media is received from a MediaStream obtained using the WebRTC or Media Capture and Streams APIs.",
+    "params": [
+      {
+        "name": "mediaStream",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioSourceNode/mediaStream",
+        "description": "The MediaStream used when constructing this MediaStreamAudioSourceNode."
+      }
+    ]
+  },
+  {
+    "name": "OscillatorNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode",
+    "properties": {
+      "Number of inputs": "0",
+      "Number of outputs": "1",
+      "Channel count mode": "max",
+      "Channel count": "2 (not used in the default count mode)",
+      "Channel interpretation": "speakers"
+    },
+    "params": [
+      {
+        "name": "frequency",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/frequency",
+        "description": "An a-rate AudioParam representing the frequency of oscillation in hertz (though the AudioParam returned is read-only, the value it represents is not). The default value is 440 Hz (a standard middle-A note)."
+      },
+      {
+        "name": "detune",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/detune",
+        "description": "An a-rate AudioParam representing detuning of oscillation in cents (though the AudioParam returned is read-only, the value it represents is not). The default value is 0."
+      },
+      {
+        "name": "type",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/type",
+        "description": "A string which specifies the shape of waveform to play; this can be one of a number of standard values, or custom to use a PeriodicWave to describe a custom waveform. Different waves will produce different tones. Standard values are \"sine\", \"square\", \"sawtooth\", \"triangle\" and \"custom\". The default is \"sine\"."
+      }
+    ]
+  },
+  {
+    "name": "PannerNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "1",
+      "Channel count mode": "clamped-max",
+      "Channel count": "2",
+      "Channel interpretation": "speakers"
+    },
+    "params": [
+      {
+        "name": "coneInnerAngle",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/coneInnerAngle",
+        "description": "Is a double value describing the angle, in degrees, of a cone inside of which there will be no volume reduction."
+      },
+      {
+        "name": "coneOuterAngle",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/coneOuterAngle",
+        "description": "A double value describing the angle, in degrees, of a cone outside of which the volume will be reduced by a constant value, defined by the coneOuterGain attribute."
+      },
+      {
+        "name": "coneOuterGain",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/coneOuterGain",
+        "description": "A double value describing the amount of volume reduction outside the cone defined by the coneOuterAngle attribute. Its default value is 0, meaning that no sound can be heard."
+      },
+      {
+        "name": "distanceModel",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/distanceModel",
+        "description": "An enumerated value determining which algorithm to use to reduce the volume of the audio source as it moves away from the listener. Possible values are \"linear\", \"inverse\" and \"exponential\". The default value is \"inverse\"."
+      },
+      {
+        "name": "maxDistance",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/maxDistance",
+        "description": "A double value representing the maximum distance between the audio source and the listener, after which the volume is not reduced any further."
+      },
+      {
+        "name": "orientationX",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/orientationX",
+        "description": "Represents the horizontal position of the audio source's vector in a right-hand cartesian coordinate system. While this AudioParam cannot be directly changed, its value can be altered using its value property. The default is value is 1."
+      },
+      {
+        "name": "orientationY",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/orientationY",
+        "description": "Represents the vertical position of the audio source's vector in a right-hand cartesian coordinate system. The default is 0. While this AudioParam cannot be directly changed, its value can be altered using its value property. The default is value is 0."
+      },
+      {
+        "name": "orientationZ",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/orientationZ",
+        "description": "Represents the longitudinal (back and forth) position of the audio source's vector in a right-hand cartesian coordinate system. The default is 0. While this AudioParam cannot be directly changed, its value can be altered using its value property. The default is value is 0."
+      },
+      {
+        "name": "panningModel",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/panningModel",
+        "description": "An enumerated value determining which spatialisation algorithm to use to position the audio in 3D space."
+      },
+      {
+        "name": "positionX",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/positionX",
+        "description": "Represents the horizontal position of the audio in a right-hand cartesian coordinate system. The default is 0. While this AudioParam cannot be directly changed, its value can be altered using its value property. The default is value is 0."
+      },
+      {
+        "name": "positionY",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/positionY",
+        "description": "Represents the vertical position of the audio in a right-hand cartesian coordinate system. The default is 0. While this AudioParam cannot be directly changed, its value can be altered using its value property. The default is value is 0."
+      },
+      {
+        "name": "positionZ",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/positionZ",
+        "description": "Represents the longitudinal (back and forth) position of the audio in a right-hand cartesian coordinate system. The default is 0. While this AudioParam cannot be directly changed, its value can be altered using its value property. The default is value is 0."
+      },
+      {
+        "name": "refDistance",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/refDistance",
+        "description": "A double value representing the reference distance for reducing volume as the audio source moves further from the listener. For distances greater than this the volume will be reduced based on rolloffFactor and distanceModel."
+      },
+      {
+        "name": "rolloffFactor",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/rolloffFactor",
+        "description": "A double value describing how quickly the volume is reduced as the source moves away from the listener. This value is used by all distance models."
+      }
+    ]
+  },
+  {
+    "name": "WaveShaperNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "1",
+      "Channel count mode": "max",
+      "Channel count": "2 (not used in the default count mode)",
+      "Channel interpretation": "speakers"
+    },
+    "description": "The WaveShaperNode interface represents a non-linear distorter.",
+    "params": [
+      {
+        "name": "curve",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode/curve",
+        "description": "Is a Float32Array of numbers describing the distortion to apply."
+      },
+      {
+        "name": "oversample",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode/oversample",
+        "description": "Is an enumerated value indicating if oversampling must be used. Oversampling is a technique for creating more samples (up-sampling) before applying the distortion effect to the audio signal."
+      }
+    ]
+  },
+  {
+    "name": "StereoPannerNode",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode",
+    "properties": {
+      "Number of inputs": "1",
+      "Number of outputs": "1",
+      "Channel count mode": "clamped-max",
+      "Channel count": "2",
+      "Channel interpretation": "speakers"
+    },
+    "params": [
+      {
+        "name": "pan",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode/pan",
+        "description": "Is an a-rate AudioParam representing the amount of panning to apply."
+      }
+    ]
+  }
+]
