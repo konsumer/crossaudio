@@ -1,6 +1,6 @@
 # crossaudio oscilloscope
 
-This allows you to draw a spectrograph to a canvas.
+This allows you to draw a oscilloscope to a canvas.
 
 ![screenshot](./screenshot.png)
 
