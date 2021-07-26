@@ -18,6 +18,8 @@ Put this in your HTML:
 And this in your script:
 
 ```js
+import { play, Params } from '@crossaudio/core'
+
 const mtof = note => 440 * Math.pow(2, (note - 69) / 12)
 
 const synth = (context, params) => {
