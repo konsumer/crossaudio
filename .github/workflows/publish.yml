@@ -1,6 +1,6 @@
 on: push
 jobs:
-  insiders-build:
+  release-build:
     strategy:
       matrix:
         os: [windows, macos, ubuntu]
@@ -48,7 +48,7 @@ jobs:
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [insiders-build, test]
+    needs: [release-build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v2
