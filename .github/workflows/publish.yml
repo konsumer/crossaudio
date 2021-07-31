@@ -7,16 +7,19 @@ jobs:
         include:
           - os: windows
             build: |
+              npm ci
               npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" "{{caxa}}/lib/index.js" --output "crossaudio-windows-${{ github.sha }}.exe"
             artifact: crossaudio-windows-${{ github.sha }}.exe
           - os: macos
             build: |
+              npm ci
               npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" "{{caxa}}/lib/index.js" --output "crossaudio"
               tar -czf "crossaudio-macos-${{ github.sha }}.tgz" "crossaudio"
             artifact: crossaudio-macos-${{ github.sha }}.tgz
           - os: ubuntu
             build: |
               sudo apt-get install -y libasound2-dev
+              npm ci
               npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" "{{caxa}}/lib/index.js" --output "crossaudio"
               tar -czf "crossaudio-linux-${{ github.sha }}.tgz" "crossaudio"
             artifact: crossaudio-linux-${{ github.sha }}.tgz
@@ -27,7 +30,6 @@ jobs:
         with:
           node-version: 16
       - run: |
-          npm ci
           ${{ matrix.build }}
       - uses: actions/upload-artifact@v2
         with:
