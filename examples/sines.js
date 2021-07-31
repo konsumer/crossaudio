@@ -9,8 +9,6 @@ const sample = list => list[(Math.random() * list.length) | 0]
 const mtof = note => 440 * Math.pow(2, (note - 69) / 12)
 
 export default (context, params) => {
-  const sched = new WebAudioScheduler({ context, timerAPI: global })
-
   function synth (t0, midi, dur) {
     const osc1 = context.createOscillator()
     const osc2 = context.createOscillator()
@@ -37,6 +35,8 @@ export default (context, params) => {
     gain.gain.linearRampToValueAtTime(0, t2)
     gain.connect(context.destination)
   }
+
+  const sched = new WebAudioScheduler({ context, timerAPI: global })
 
   function compose (e) {
     const t0 = e.playbackTime
