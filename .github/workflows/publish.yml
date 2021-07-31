@@ -7,14 +7,14 @@ jobs:
         include:
           - os: windows
             build: |
-              npm ci
-              packages/cli/
+              npm i
+              cd packages/cli/
               npx caxa -i . -o crossaudio.exe "{{caxa}}/node_modules/.bin/node" "{{caxa}}/crossaudio.cjs"
               7z a crossaudio-windows-${{ github.sha }}.zip crossaudio.exe
             artifact: crossaudio-windows-${{ github.sha }}.zip
           - os: macos
             build: |
-              npm ci
+              npm i
               cd packages/cli/
               npx caxa -i . -o crossaudio "{{caxa}}/node_modules/.bin/node" "{{caxa}}/crossaudio.cjs"
               tar -czf "crossaudio-macos-${{ github.sha }}.tgz" "crossaudio"
@@ -22,7 +22,7 @@ jobs:
           - os: ubuntu
             build: |
               sudo apt-get install -y libasound2-dev
-              npm ci
+              npm i
               cd packages/cli/
               npx caxa -i . -o crossaudio "{{caxa}}/node_modules/.bin/node" "{{caxa}}/crossaudio.cjs"
               tar -czf "crossaudio-linux-${{ github.sha }}.tgz" "crossaudio"
