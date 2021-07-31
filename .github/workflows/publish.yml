@@ -8,19 +8,19 @@ jobs:
           - os: windows
             build: |
               npm ci
-              npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" "{{caxa}}/lib/index.js" --output "crossaudio-windows-${{ github.sha }}.exe"
+              npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" -i "{{caxa}}/crossaudio.cjs" --output "crossaudio-windows-${{ github.sha }}.exe"
             artifact: crossaudio-windows-${{ github.sha }}.exe
           - os: macos
             build: |
               npm ci
-              npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" "{{caxa}}/lib/index.js" --output "crossaudio"
+              npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" -i "{{caxa}}/crossaudio.cjs" --output "crossaudio"
               tar -czf "crossaudio-macos-${{ github.sha }}.tgz" "crossaudio"
             artifact: crossaudio-macos-${{ github.sha }}.tgz
           - os: ubuntu
             build: |
               sudo apt-get install -y libasound2-dev
               npm ci
-              npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" "{{caxa}}/lib/index.js" --output "crossaudio"
+              npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" -i "{{caxa}}/crossaudio.cjs" --output "crossaudio"
               tar -czf "crossaudio-linux-${{ github.sha }}.tgz" "crossaudio"
             artifact: crossaudio-linux-${{ github.sha }}.tgz
     runs-on: ${{ matrix.os }}-latest
