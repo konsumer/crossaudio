@@ -1,0 +1,96 @@
+on: push
+jobs:
+  insiders-build:
+    strategy:
+      matrix:
+        os: [windows, macos, ubuntu]
+        include:
+          - os: windows
+            build: |
+              npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" "{{caxa}}/lib/index.js" --output "crossaudio-windows-${{ github.sha }}.exe"
+            artifact: crossaudio-windows-${{ github.sha }}.exe
+          - os: macos
+            build: |
+              npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" "{{caxa}}/lib/index.js" --output "crossaudio"
+              tar -czf "crossaudio-macos-${{ github.sha }}.tgz" "crossaudio"
+            artifact: crossaudio-macos-${{ github.sha }}.tgz
+          - os: ubuntu
+            build: |
+              npx caxa --directory packages/cli/ --command "{{caxa}}/node_modules/.bin/node" "{{caxa}}/lib/index.js" --output "crossaudio"
+              tar -czf "crossaudio-linux-${{ github.sha }}.tgz" "crossaudio"
+            artifact: crossaudio-linux-${{ github.sha }}.tgz
+    runs-on: ${{ matrix.os }}-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - run: |
+          npm ci
+          ${{ matrix.build }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}
+
+  npm-publish:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - run: npx lerna publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [insiders-build, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: crossaudio-windows-${{ github.sha }}.exe
+      - uses: actions/download-artifact@v2
+        with:
+          name: crossaudio-macos-${{ github.sha }}.app.tgz
+      - uses: actions/download-artifact@v2
+        with:
+          name: crossaudio-linux-${{ github.sha }}.tgz
+      - run: echo "::set-output name=tag::${GITHUB_REF#refs/tags/}"
+        id: tag
+      - uses: actions/create-release@v1
+        id: create-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          release_name: Release ${{ steps.tag.outputs.tag }}
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: crossaudio-windows-${{ github.sha }}.exe
+          asset_name: crossaudio-windows-${{ steps.tag.outputs.tag }}.exe
+          asset_content_type: application/vnd.microsoft.portable-executable
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: crossaudio-macos-${{ github.sha }}.tgz
+          asset_name: crossaudio-macos-${{ steps.tag.outputs.tag }}.tgz
+          asset_content_type: application/gzip
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: crossaudio-linux-${{ github.sha }}.tgz
+          asset_name: crossaudio-linux-${{ steps.tag.outputs.tag }}.tgz
+          asset_content_type: application/gzip
