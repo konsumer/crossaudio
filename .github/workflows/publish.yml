@@ -6,18 +6,21 @@ jobs:
         os: [windows, macos, ubuntu]
         include:
           - os: windows
+            name: Build for Windows
             build: |
               npm ci
               npx caxa -i packages/cli/ -o crossaudio.exe "{{caxa}}/node_modules/.bin/node" "{{caxa}}/crossaudio.cjs"
               7z a crossaudio-windows-${{ github.sha }}.zip crossaudio.exe
             artifact: crossaudio-windows-${{ github.sha }}.zip
           - os: macos
+            name: Build for Mac
             build: |
               npm ci
               npx caxa -i packages/cli/ -o crossaudio "{{caxa}}/node_modules/.bin/node" "{{caxa}}/crossaudio.cjs"
               tar -czf "crossaudio-macos-${{ github.sha }}.tgz" "crossaudio"
             artifact: crossaudio-macos-${{ github.sha }}.tgz
           - os: ubuntu
+            name: Build for Linux
             build: |
               sudo apt-get install -y libasound2-dev
               npm ci
