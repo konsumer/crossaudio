@@ -103,9 +103,10 @@ export async function audioFile (context, filename) {
 }
 
 // hooks up audio and starts playing
-export async function play (synth, params) {
+export async function play (synth, params, autostart = true) {
   let speaker
   let context
+  let clicked = false
 
   if (isNode) {
     const AudioContext = (await import('web-audio-engine')).StreamAudioContext
@@ -113,15 +114,19 @@ export async function play (synth, params) {
     speaker = new Speaker()
     context = new AudioContext()
     context.pipe(speaker)
-    context.resume()
+    if (autostart) {
+      context.resume()
+    }
     synth(context, params)
   } else {
+    context = new AudioContext()
+    synth(context, params)
+
     // audio requires click to start, in browser
     window.addEventListener('click', () => {
-      if (!context) {
-        context = new AudioContext()
+      if (!clicked) {
+        clicked = true
         context.resume()
-        synth(context, params)
       }
     })
   }
