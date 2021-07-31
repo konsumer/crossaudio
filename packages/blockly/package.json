@@ -19,15 +19,9 @@
     "url": "https://github.com/konsumer/crossaudio/issues"
   },
   "homepage": "http://konsumer.js.org/crossaudio/",
-  "devDependencies": {
-    "jsdom": "^16.6.0",
-    "microbundle": "^0.13.3",
-    "node-fetch": "^2.6.1"
-  },
   "scripts": {
     "generate": "node generate.js",
-    "build": "generate && microbundle",
-    "prepublishOnly": "npm run build"
+    "build": "npx microbundle"
   },
   "source": "./index.js",
   "main": "./dist/crossaudio-blockly.cjs",

@@ -6,22 +6,21 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && cp demos/* dist/",
-    "deploy": "gh-pages -d dist",
+    "deploy": "npx gh-pages -d dist",
     "predeploy": "npm run build"
   },
   "dependencies": {
     "@crossaudio/oscilloscope": "^0.1.16",
     "@crossaudio/react": "^0.1.16",
     "@crossaudio/spectrograph": "^0.1.16",
-    "@mdx-js/react": "^1.6.22",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-piano": "^3.1.3",
-    "vite-plugin-mdx": "^3.5.6"
+    "react-piano": "^3.1.3"
   },
   "devDependencies": {
     "@vitejs/plugin-react-refresh": "^1.3.1",
-    "gh-pages": "^3.2.3",
-    "vite": "^2.4.2"
+    "vite": "^2.4.2",
+    "vite-plugin-mdx": "^3.5.6",
+    "@mdx-js/react": "^1.6.22"
   }
 }

@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
-import yargs from 'yargs'
-import { hideBin } from 'yargs/helpers'
-import { play, Params } from '@crossaudio/core'
-import easymidi from 'easymidi'
-import path from 'path'
+const path = require('path')
+
+// hack to make pkg work
+const yargs = require('./node_modules/yargs')
+const { hideBin } = require('./node_modules/yargs/helpers')
+const easymidi = require('./node_modules/easymidi')
+const { play, Params } = require('./node_modules/@crossaudio/core')
 
 const {
   $0,

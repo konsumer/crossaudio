@@ -2,15 +2,9 @@
   "name": "crossaudio-root",
   "private": true,
   "type": "module",
-  "devDependencies": {
-    "lerna": "^4.0.0",
-    "standard": "^16.0.3"
-  },
-  "dependencies": {
-  },
   "scripts": {
-    "start": "lerna run dev --stream --scope crossaudio-site",
-    "deploy": "lerna run deploy --stream --scope crossaudio-site",
-    "postinstall": "lerna bootstrap"
+    "start": "npx lerna run dev --stream --scope crossaudio-site",
+    "deploy": "npx lerna run deploy --stream --scope crossaudio-site",
+    "postinstall": "npx lerna bootstrap"
   }
 }

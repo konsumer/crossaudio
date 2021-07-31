@@ -22,11 +22,7 @@
   },
   "homepage": "http://konsumer.js.org/crossaudio/",
   "scripts": {
-    "build": "microbundle --external none",
-    "prepublishOnly": "npm run build"
-  },
-  "devDependencies": {
-    "microbundle": "^0.13.3"
+    "build": "npx microbundle --external none"
   },
   "source": "./index.js",
   "main": "./dist/crossaudio-bargraph.cjs",

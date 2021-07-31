@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 // this will generate blockly JSON definitions from MDN docs
+// you shouldn't need to run this
+// I just left it here for reference
 
 import fetch from 'node-fetch'
 import { JSDOM } from 'jsdom'
