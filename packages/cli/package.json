@@ -24,8 +24,5 @@
   "bugs": {
     "url": "https://github.com/konsumer/crossaudio/issues"
   },
-  "homepage": "http://konsumer.js.org/crossaudio/",
-  "scripts": {
-    "build": "npx pkg --public --out-path dist/ crossaudio.cjs"
-  }
+  "homepage": "http://konsumer.js.org/crossaudio/"
 }

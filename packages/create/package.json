@@ -17,7 +17,7 @@
   },
   "homepage": "http://konsumer.js.org/crossaudio/",
   "bin": {
-    "create-crossaudio-cli": "./index.js"
+    "create-crossaudio": "./index.js"
   },
   "dependencies": {
     "inquirer": "^8.1.2",
