@@ -39,5 +39,8 @@
     "dist/crossaudio.modern.js.map",
     "dist/crossaudio.cjs",
     "dist/crossaudio.cjs.map"
-  ]
+  ],
+  "devDependencies": {
+    "emitonoff": "^0.1.0"
+  }
 }

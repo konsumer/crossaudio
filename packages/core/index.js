@@ -1,65 +1,13 @@
 /* global Audio, AudioContext */
 
-// inlining this for less deps
-const emitonoff = function (thing) {
-  if (!thing) thing = {}
-
-  thing._subs = []
-  thing._paused = false
-  thing._pending = []
-
-  /**
-   * Sub of pubsub
-   * @param  {String}   name name of event
-   * @param  {Function} cb   your callback
-   */
-  thing.on = function (name, cb) {
-    thing._subs[name] = thing._subs[name] || []
-    thing._subs[name].push(cb)
-  }
-
-  /**
-   * Remove sub of pubsub
-   * @param  {String}   name name of event
-   * @param  {Function} cb   your callback
-   */
-  thing.off = function (name, cb) {
-    if (!thing._subs[name]) return
-    for (const i in thing._subs[name]) {
-      if (thing._subs[name][i] === cb) {
-        thing._subs[name].splice(i, 1)
-        break
-      }
-    }
-  }
-
-  /**
-   * Pub of pubsub
-   * @param  {String}   name name of event
-   * @param  {Mixed}    data the data to publish
-   */
-  thing.emit = function (name) {
-    if (!thing._subs[name]) return
-
-    const args = Array.prototype.slice.call(arguments, 1)
-
-    if (thing._paused) {
-      thing._pending[name] = thing._pending[name] || []
-      thing._pending[name].push(args)
-      return
-    }
-
-    for (const i in thing._subs[name]) {
-      thing._subs[name][i].apply(thing, args)
-    }
-  }
-
-  return thing
-}
+import emitonoff from 'emitonoff'
 
 const isNode = typeof process !== 'undefined' && process.versions && process.versions.node
 
+export const mtof = note => 440 * Math.pow(2, (note - 69) / 12)
+
 // simple observable prop-store
+// TOOD: add min/max/default
 export class Params {
   constructor (values) {
     this.values = values

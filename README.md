@@ -76,12 +76,12 @@ npm run deploy
 - write some sort of CLI viz
 - finish emulator for pi hardware
 - flesh out docs, completely
-- make proper website with react demo
-- add more codecs (only supports wav)
+- add more codecs to native  (only supports wav)
 - use [webmidi](https://github.com/djipco/webmidi/tree/develop) to normalize midi on local/browser
 - autopublish everything via github actions (build & publish page, all npm module, etc)
 - Confirm making current dir a project in `create` and add `--yes` option to not prompt
-- [WAX](https://github.com/hoch/WAAX) has good ideas about registering a plugin & UI.
+- [WAX](https://github.com/hoch/WAAX) has good ideas about UI, but I'd rather just use web nodes (instead of wrapped plugins and stuff)
 - it would be cool to have seperate ready-made react & web-component controls that work easily to make a UI (name and it figures out range and hooks to it.) Publish them on [webcomponents.org](https://www.webcomponents.org/publish)
 - better packaging setup (JSX should be available, things properly inlined, etc)
 - merge demos on front-page better
+- typescript definitions
