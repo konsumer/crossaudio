@@ -4,7 +4,7 @@
   "version": "0.1.9",
   "type": "module",
   "dependencies": {
-    "speaker": "^0.5.3",
+    "naudiodon": "^2.3.5",
     "web-audio-engine": "^0.13.4"
   },
   "gitHead": "df8591ad881965a258eece608a33796bbd2a1279",
@@ -23,7 +23,8 @@
   },
   "homepage": "http://konsumer.js.org/crossaudio/",
   "scripts": {
-    "build": "npx microbundle"
+    "build": "npx microbundle",
+    "test": "node test.js"
   },
   "source": "./index.js",
   "main": "./dist/crossaudio.cjs",

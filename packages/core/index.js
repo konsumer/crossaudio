@@ -51,29 +51,50 @@ export async function audioFile (context, filename) {
 }
 
 // hooks up audio and starts playing
-export async function play (synth, params, autostart = true) {
-  let speaker
+export async function play (synth, params, input = false) {
   let context
-  let clicked = false
 
   if (isNode) {
     const AudioContext = (await import('web-audio-engine')).StreamAudioContext
-    const Speaker = (await import('speaker')).default
-    speaker = new Speaker()
-    context = new AudioContext()
-    context.pipe(speaker)
-    if (autostart) {
-      context.resume()
-    }
-    synth(context, params)
-  } else {
-    context = new AudioContext()
-    synth(context, params)
+    const { AudioIO } = (await import('naudiodon'))
 
+    const options = {
+      outOptions: {
+        channelCount: 1,
+        sampleFormat: 16,
+        sampleRate: 44100
+      }
+    }
+
+    if (input) {
+      options.inOptions = {
+        channelCount: 1,
+        sampleFormat: 16,
+        sampleRate: 44100
+      }
+    }
+
+    const aio = new AudioIO(options)
+
+    context = new AudioContext()
+
+    if (input) {
+      context.mic = context.createBufferSource()
+      context.mic.buffer = context.createBufferSource(1, context.sampleRate * 3, context.sampleRate)
+      context.mic.start()
+    }
+
+    synth(context, params)
+    context.pipe(aio)
+    context.resume()
+    aio.start()
+  } else {
+    // TODO: setup mic input
     // audio requires click to start, in browser
     window.addEventListener('click', () => {
-      if (!clicked) {
-        clicked = true
+      if (!context) {
+        context = new AudioContext()
+        synth(context, params)
         context.resume()
       }
     })
