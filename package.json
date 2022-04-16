@@ -4,9 +4,12 @@
   "type": "module",
   "version": "0.1.17",
   "scripts": {
-    "start": "npx lerna run dev --stream --scope crossaudio-site",
-    "deploy": "npx lerna run deploy --stream --scope crossaudio-site",
-    "postinstall": "npx lerna bootstrap"
+    "start": "npx -y lerna run dev --stream --scope crossaudio-site",
+    "deploy": "npx -y lerna run deploy --stream --scope crossaudio-site",
+    "postinstall": "npx -y lerna bootstrap",
+    "build": "npx -y lerna run build --stream",
+    "publish": "npx -y lerna publish",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "web-audio-scheduler": "^1.4.0"
