@@ -1,6 +1,6 @@
 {
   "name": "create-crossaudio",
-  "version": "0.1.9",
+  "version": "0.1.17",
   "description": "Tool to create a crossaudio synth quickly.",
   "publishConfig": {
     "access": "public"
