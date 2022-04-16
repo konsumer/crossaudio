@@ -6,7 +6,7 @@
   "dependencies": {
     "color-interpolate": "^1.0.5"
   },
-  "gitHead": "df8591ad881965a258eece608a33796bbd2a1279",
+  "gitHead": "3ac842bf3b99d855ccf092acc5001237155002fa",
   "publishConfig": {
     "access": "public"
   },

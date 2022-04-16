@@ -3,7 +3,7 @@
   "description": "A canvas-based oscilloscope for crossaudio, on the web",
   "version": "0.1.20",
   "type": "module",
-  "gitHead": "df8591ad881965a258eece608a33796bbd2a1279",
+  "gitHead": "3ac842bf3b99d855ccf092acc5001237155002fa",
   "publishConfig": {
     "access": "public"
   },

@@ -2,10 +2,38 @@
   "name": "@crossaudio/mod",
   "version": "0.1.20",
   "src": "src/crossaudio-mod.js",
-  "scripts": {
-    "start": "npx -y live-server src"
-  },
   "keywords": [],
   "author": "David Konsumer <konsumer@jetboystudio.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "3ac842bf3b99d855ccf092acc5001237155002fa",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konsumer/crossaudio.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konsumer/crossaudio/issues"
+  },
+  "homepage": "http://konsumer.js.org/crossaudio/",
+  "scripts": {
+    "build": "npx microbundle",
+    "test": "node test.js"
+  },
+  "main": "./dist/crossaudio-mod.cjs",
+  "exports": "./dist/crossaudio-mod.modern.js",
+  "module": "./dist/crossaudio-mod.module.js",
+  "unpkg": "./dist/crossaudio-mod.umd.js",
+  "files": [
+    "dist/crossaudio-mod.umd.js",
+    "dist/crossaudio-mod.umd.js.map",
+    "dist/crossaudio-mod.module.js",
+    "dist/crossaudio-mod.module.js.map",
+    "dist/crossaudio-mod.modern.js",
+    "dist/crossaudio-mod.modern.js.map",
+    "dist/crossaudio-mod.cjs",
+    "dist/crossaudio-mod.cjs.map"
+  ]
 }

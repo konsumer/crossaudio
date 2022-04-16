@@ -39,5 +39,6 @@
     "dist/crossaudio-context.modern.js.map",
     "dist/crossaudio-context.cjs",
     "dist/crossaudio-contextcjs.map"
-  ]
+  ],
+  "gitHead": "3ac842bf3b99d855ccf092acc5001237155002fa"
 }
