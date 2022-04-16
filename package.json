@@ -2,7 +2,7 @@
   "name": "crossaudio-root",
   "private": true,
   "type": "module",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "scripts": {
     "start": "npx lerna run dev --stream --scope crossaudio-site",
     "deploy": "npx lerna run deploy --stream --scope crossaudio-site",
