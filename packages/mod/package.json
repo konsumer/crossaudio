@@ -1,7 +1,7 @@
 {
   "name": "@crossaudio/mod",
   "description": "A browser & native way to play tracker music",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "type": "module",
   "publishConfig": {
     "access": "public"
