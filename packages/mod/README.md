@@ -32,7 +32,7 @@ Here is a complete example, in a browser, using `loadUrl`:
 
 ```html
 <script type="module">
-import { Modplayer, PlayerFasttracker } from 'https://unpkg.com/modernmod'
+import { Modplayer, PlayerFasttracker } from 'https://unpkg.com/@crossaudio/mod@0.1.22/dist/crossaudio-mod.module.js'
 
 const modplayer = new Modplayer({ xm: PlayerFasttracker })
 
@@ -85,7 +85,7 @@ Now, you have `Modplayer`, `PlayerFasttracker`, `PlayerProtracker`, `PlayerScrea
 <script type="importmap">
 {
   "imports": {
-    "@crossaudio/mod": "https://unpkg.com/modernmod"
+    "@crossaudio/mod": "https://unpkg.com/@crossaudio/mod@0.1.22/dist/crossaudio-mod.module.js"
   }
 }
 </script>

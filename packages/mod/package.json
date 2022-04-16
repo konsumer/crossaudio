@@ -19,7 +19,8 @@
   "homepage": "http://konsumer.js.org/crossaudio/",
   "scripts": {
     "build": "npx -y microbundle@latest",
-    "test": "node test.js"
+    "test": "node test.js",
+    "start": "npx -y live-server src"
   },
   "source": "./src/crossaudio-mod.js",
   "main": "./dist/crossaudio-mod.cjs",
