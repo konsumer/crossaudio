@@ -1,0 +1,39 @@
+<!-- this is a standalone example of @crossaudio/mod -->
+
+<body>
+  <p>Choose a mod-file</p>
+  <input type="file" id="fi" />
+  <div id="s"></div>
+</body>
+
+<script type="importmap">
+{
+  "imports": {
+    "@crossaudio/mod": "./crossaudio-mod.js"
+  }
+}
+</script>
+<script type="module">
+/* global FileReader */
+
+import { Modplayer, PlayerProtracker, PlayerScreamtracker, PlayerFasttracker } from '@crossaudio/mod'
+
+const modplayer = new Modplayer({ mod: PlayerProtracker, s3m: PlayerScreamtracker, xm: PlayerFasttracker })
+
+// this reads the file when the input chnages, and sets up a modplayer
+const fi = document.getElementById('fi')
+const s = document.getElementById('s')
+
+fi.addEventListener('change', () => {
+  const reader = new FileReader()
+  reader.onload = async r => {
+    await modplayer.load(r.target.result, fi.files[0].name.split('.').pop().toLowerCase())
+    modplayer.play()
+  }
+  reader.readAsArrayBuffer(fi.files[0])
+})
+
+setInterval(() => {
+  s.innerHTML = `state: ${modplayer.state} playing: ${modplayer.playing}`
+}, 500)
+</script>

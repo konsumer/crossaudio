@@ -1,0 +1,11 @@
+{
+  "name": "@crossaudio/mod",
+  "version": "0.0.0",
+  "src": "src/crossaudio-mod.js",
+  "scripts": {
+    "start": "npx -y live-server src"
+  },
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "license": "MIT"
+}
