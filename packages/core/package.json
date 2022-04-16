@@ -1,10 +1,10 @@
 {
   "name": "@crossaudio/core",
   "description": "A browser & native way to make synthesizers in javascript using an audio context",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "type": "module",
   "dependencies": {
-    "@crossaudio/context": "^0.1.19",
+    "@crossaudio/context": "^0.1.20",
     "emitonoff": "latest"
   },
   "gitHead": "df8591ad881965a258eece608a33796bbd2a1279",

@@ -1,6 +1,6 @@
 {
   "name": "crossaudio-site",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "private": true,
   "homepage": "http://konsumer.js.org/crossaudio/",
   "scripts": {
@@ -10,9 +10,9 @@
     "predeploy": "npm run build"
   },
   "dependencies": {
-    "@crossaudio/oscilloscope": "^0.1.19",
-    "@crossaudio/react": "^0.1.19",
-    "@crossaudio/spectrograph": "^0.1.19",
+    "@crossaudio/oscilloscope": "^0.1.20",
+    "@crossaudio/react": "^0.1.20",
+    "@crossaudio/spectrograph": "^0.1.20",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-piano": "^3.1.3"
