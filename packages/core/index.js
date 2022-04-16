@@ -1,6 +1,7 @@
-/* global Audio, AudioContext */
+/* global Audio */
 
 import emitonoff from 'emitonoff'
+import getContext from '@crossaudio/context'
 
 const isNode = typeof process !== 'undefined' && process.versions && process.versions.node
 
@@ -52,51 +53,7 @@ export async function audioFile (context, filename) {
 
 // hooks up audio and starts playing
 export async function play (synth, params, input = false) {
-  let context
-
-  if (isNode) {
-    const AudioContext = (await import('web-audio-engine')).StreamAudioContext
-    const { AudioIO } = (await import('naudiodon'))
-
-    const options = {
-      outOptions: {
-        channelCount: 1,
-        sampleFormat: 16,
-        sampleRate: 44100
-      }
-    }
-
-    if (input) {
-      options.inOptions = {
-        channelCount: 1,
-        sampleFormat: 16,
-        sampleRate: 44100
-      }
-    }
-
-    const aio = new AudioIO(options)
-
-    context = new AudioContext()
-
-    if (input) {
-      context.mic = context.createBufferSource()
-      context.mic.buffer = context.createBufferSource(1, context.sampleRate * 3, context.sampleRate)
-      context.mic.start()
-    }
-
-    synth(context, params)
-    context.pipe(aio)
-    context.resume()
-    aio.start()
-  } else {
-    // TODO: setup mic input
-    // audio requires click to start, in browser
-    window.addEventListener('click', () => {
-      if (!context) {
-        context = new AudioContext()
-        synth(context, params)
-        context.resume()
-      }
-    })
-  }
+  const context = await getContext()
+  synth(context, params)
+  context.resume()
 }

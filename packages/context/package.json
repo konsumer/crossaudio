@@ -1,0 +1,43 @@
+{
+  "name": "@crossaudio/context",
+  "description": "A browser & native way to make an audio context",
+  "version": "0.1.9",
+  "type": "module",
+  "dependencies": {
+    "naudiodon": "^2.3.5",
+    "web-audio-engine": "^0.13.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konsumer/crossaudio.git"
+  },
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konsumer/crossaudio/issues"
+  },
+  "homepage": "http://konsumer.js.org/crossaudio/",
+  "scripts": {
+    "build": "npx microbundle",
+    "test": "node test.js"
+  },
+  "source": "./index.js",
+  "main": "./dist/crossaudio-context.cjs",
+  "exports": "./dist/crossaudio-context.modern.js",
+  "module": "./dist/crossaudio-context.module.js",
+  "unpkg": "./dist/crossaudio-context.umd.js",
+  "files": [
+    "dist/crossaudio-context.umd.js",
+    "dist/crossaudio-context.umd.js.map",
+    "dist/crossaudio-context.module.js",
+    "dist/crossaudio-context.module.js.map",
+    "dist/crossaudio-context.modern.js",
+    "dist/crossaudio-context.modern.js.map",
+    "dist/crossaudio-context.cjs",
+    "dist/crossaudio-contextcjs.map"
+  ]
+}
