@@ -1,6 +1,6 @@
 {
   "name": "@crossaudio/mod",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "src": "src/crossaudio-mod.js",
   "keywords": [],
   "author": "David Konsumer <konsumer@jetboystudio.com>",
@@ -13,7 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/konsumer/crossaudio.git"
   },
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/konsumer/crossaudio/issues"
   },

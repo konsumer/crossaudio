@@ -1,7 +1,7 @@
 {
   "name": "@crossaudio/oscilloscope",
   "description": "A canvas-based oscilloscope for crossaudio, on the web",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "type": "module",
   "gitHead": "3ac842bf3b99d855ccf092acc5001237155002fa",
   "publishConfig": {
