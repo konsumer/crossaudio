@@ -1,11 +1,8 @@
 {
   "name": "@crossaudio/mod",
+  "description": "A browser & native way to play tracker music",
   "version": "0.1.21",
-  "src": "src/crossaudio-mod.js",
-  "keywords": [],
-  "author": "David Konsumer <konsumer@jetboystudio.com>",
-  "license": "MIT",
-  "gitHead": "3ac842bf3b99d855ccf092acc5001237155002fa",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
@@ -13,14 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/konsumer/crossaudio.git"
   },
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/konsumer/crossaudio/issues"
   },
   "homepage": "http://konsumer.js.org/crossaudio/",
   "scripts": {
-    "build": "npx microbundle",
+    "build": "npx -y microbundle@latest",
     "test": "node test.js"
   },
+  "source": "./src/crossaudio-mod.js",
   "main": "./dist/crossaudio-mod.cjs",
   "exports": "./dist/crossaudio-mod.modern.js",
   "module": "./dist/crossaudio-mod.module.js",
@@ -33,6 +34,7 @@
     "dist/crossaudio-mod.modern.js",
     "dist/crossaudio-mod.modern.js.map",
     "dist/crossaudio-mod.cjs",
-    "dist/crossaudio-mod.cjs.map"
-  ]
+    "dist/crossaudio-modcjs.map"
+  ],
+  "gitHead": "3ac842bf3b99d855ccf092acc5001237155002fa"
 }
