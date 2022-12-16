@@ -21,6 +21,8 @@ There are READMEs in all the sub-projects:
 - [bargraph](./packages/bargraph)
 - [oscilloscope](./packages/oscilloscope)
 - [spectrograph](./packages/spectrograph)
+- [blockly visual-programming](./packages/blockly)
+- [play MOD music](./packages/mod) in crossaudio and elsewhere
 
 
 See [Getting Started](https://github.com/konsumer/crossaudio/wiki/Getting-Started) to quickly get up to speed.
